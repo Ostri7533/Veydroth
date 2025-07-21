@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Название статьи</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Oswald', sans-serif;
+            font-weight: 400;
+            font-size: 14px;
+            color: #282828; /* Signal Black (основной текст) */
+            line-height: 1.4;
+        }
+        
+        .background-container {
+            background-image: url('https://i.ibb.co/VY9fMwdV/imgonline-com-ua-Texture-seamless-f-Bgx367n-Ts-Z.png');
+            background-repeat: repeat;
+            padding: 50px;
+        }
+        
+        .gray-layer {
+            background-color: rgba(144, 144, 144, 0.5);
+            padding: 20px;
+        }
+        
+        .light-gray-block {
+            background-color: rgba(220, 220, 220, 0.5);
+            padding: 20px;
+            margin-bottom: 25px;
+        }
+        
+        /* Типографика */
+        .article-title {
+            font-size: 25px;
+            font-weight: 500;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            color: #282828; /* Signal Black */
+            letter-spacing: 0.5px;
+        }
+        
+        .content-title {
+            font-size: 20px;
+            font-weight: 500;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            color: #282828;
+        }
+        
+        .section-title {
+            font-size: 18px;
+            font-weight: 500;
+            margin: 10px 0 4px 0;
+            color: #282828;
+        }
+        
+        /* Компактные списки */
+        .content-list {
+            margin: 0 0 12px 15px;
+            padding: 0;
+            list-style-type: none;
+        }
+        
+        .content-list li {
+            margin-bottom: 3px;
+            position: relative;
+            padding-left: 14px;
+            color: #282828; /* Signal Black */
+        }
+        
+        .content-list li:before {
+            content: "—";
+            position: absolute;
+            left: 0;
+            color: #282828; /* Чёрные маркеры */
+        }
+    </style>
+</head>
+<body>
+    <div class="background-container">
+        <div class="gray-layer">
+            <!-- Статья -->
+            <div class="light-gray-block">
+                <div class="article-title">Название статьи</div>
+                <div style="font-style: italic;">
+                     Описание описание описание описание описание описание описание<br>
+                    Описание описание описание описание описание описание описание<br>
+                    Описание описание описание описание описание описание описание<br>
+                    Описание описание описание описание описание описание описание<br>
+                    Описание описание описание описание описание описание описание
+                </div>
+            </div>
+            
+            <!-- Содержание -->
+            <div class="light-gray-block">
+                <div class="content-title">Содержание</div>
+                
+                <div class="section-title">Заголовок</div>
+                <ul class="content-list">
+                    <li>Подзаголовок</li>
+                    <li>Подзаголовок</li>
+                    <li>Подзаголовок</li>
+                </ul>
+                
+                <div class="section-title">Заголовок</div>
+                <ul class="content-list">
+                    <li>Подзаголовок</li>
+                    <li>Подзаголовок</li>
+                    <li>Подзаголовок</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
