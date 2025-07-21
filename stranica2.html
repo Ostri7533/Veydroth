@@ -6,9 +6,10 @@
     <title>Название статьи</title>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500&display=swap" rel="stylesheet">
     <style>
-        body {
+        html, body {
             margin: 0;
             padding: 0;
+            height: 100%;
             font-family: 'Oswald', sans-serif;
             font-weight: 400;
             font-size: 14px;
@@ -19,7 +20,9 @@
         .background-container {
             background-image: url('https://i.ibb.co/VY9fMwdV/imgonline-com-ua-Texture-seamless-f-Bgx367n-Ts-Z.png');
             background-repeat: repeat;
+            min-height: 100%;
             padding: 50px;
+            box-sizing: border-box;
         }
         
         .gray-layer {
