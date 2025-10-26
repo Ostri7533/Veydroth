@@ -2,7 +2,11 @@
 <!--Generated with https://sitemap-xml.ru-->
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/siteindex.xsd">
   <url>
-    <loc>https://ostri7533.github.io/</loc>
+    <loc>https://ostri7533.github.io/Veydroth/</loc>
     <priority>1.0</priority>
   </url>
+<url>
+<loc>https://ostri7533.github.io/Veydroth/magic-and-physiology-of-mages</loc>
+<priority>0.8</priority>
+</url>
 </urlset>
