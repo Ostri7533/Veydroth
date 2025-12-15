@@ -634,6 +634,112 @@ a:hover {
     color: #e74c3c; /* Яркий цвет при наведении */
     text-decoration: underline;
 }
+
+            /* СТИЛИ ДЛЯ КРАСИВОГО БЛОКА ЛИЦЕНЗИИ */
+        .license-footer {
+            width: 100%;
+            max-width: 550px;
+            margin: 40px auto 20px;
+            padding: 15px 20px;
+            text-align: center;
+            font-size: 12px;
+            color: var(--secondary-text);
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.5;
+            background-color: var(--secondary-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            box-shadow: 0 2px 8px var(--shadow-color);
+        }
+
+        .license-footer a {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .license-footer a:hover {
+            text-decoration: underline;
+            opacity: 0.8;
+        }
+
+        .license-text {
+            margin-bottom: 8px;
+            opacity: 0.9;
+        }
+
+        .license-icons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            margin: 8px 0;
+            padding: 8px;
+            background-color: var(--bg-color);
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+            width: fit-content;
+            margin: 8px auto;
+        }
+
+        .license-icons img {
+            width: 16px;
+            height: 16px;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+
+        .license-icons img:hover {
+            opacity: 1;
+        }
+
+        .license-notes {
+            font-size: 11px;
+            margin-top: 8px;
+            opacity: 0.7;
+            font-style: italic;
+        }
+
+        @media (max-width: 768px) {
+            .license-footer {
+                max-width: calc(100% - 30px);
+                padding: 12px 15px;
+                margin: 30px auto 15px;
+            }
+            
+            .license-text {
+                font-size: 11px;
+                line-height: 1.4;
+            }
+            
+            .license-icons {
+                gap: 6px;
+                padding: 6px;
+            }
+            
+            .license-icons img {
+                width: 14px;
+                height: 14px;
+            }
+            
+            .license-notes {
+                font-size: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .license-footer {
+                max-width: calc(100% - 20px);
+                padding: 10px 12px;
+                margin: 25px auto 10px;
+            }
+            
+            .license-text br {
+                display: none;
+            }
+        }
+
 </style>
 
 
@@ -1305,5 +1411,6 @@ a:hover {
     </script>
 </body>
 </html>
+
 
 
