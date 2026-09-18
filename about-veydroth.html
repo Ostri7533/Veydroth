@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>О полуострове || Вейдротх</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --bg-color: #F8F5F0;
+            --text-color: #2C2C2C;
+            --accent-color: #2C2C2C;
+            --secondary-text: #5D5D5D;
+            --secondary-bg: #E8E5E0;
+            --border-color: #2C2C2C;
+            --shadow-color: rgba(0, 0, 0, 0.1);
+        }
+
+        [data-theme="dark"] {
+            --bg-color: #121212;
+            --text-color: #C0C0C0;
+            --accent-color: #D4AF37;
+            --secondary-text: #A0A0A0;
+            --secondary-bg: #1C1C1C;
+            --border-color: #D4AF37;
+            --shadow-color: rgba(0, 0, 0, 0.4);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding: 25px 0 50px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 550px;
+            max-width: calc(100% - 40px);
+        }
+
+        h1, h2, h3, .section-title {
+            font-family: 'Oswald', sans-serif;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.5em;
+        }
+
+        h1 {
+            font-size: 25px;
+            color: var(--accent-color);
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            line-height: 1.3;
+        }
+
+        h2 {
+            font-size: 20px;
+            color: var(--accent-color);
+            margin: 25px 0 10px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 8px;
+        }
+
+        h3 {
+            font-size: 18px;
+            color: var(--accent-color);
+            margin: 20px 0 8px;
+        }
+
+        .expand-button,
+        .vk-group-button {
+            font-family: 'Oswald', sans-serif;
+            font-weight: 500;
+            letter-spacing: 0.8px;
+        }
+
+        .expand-button {
+            background-color: var(--accent-color);
+            color: var(--bg-color);
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 13px;
+            margin-top: 12px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.3s ease;
+        }
+
+        .expand-button:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
+        .expandable-content .expand-button {
+            margin-top: 5px;
+            margin-bottom: 20px;
+        }
+
+        .icon-button {
+            font-family: 'Oswald', sans-serif;
+            font-weight: 500;
+            font-size: 28px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 5px;
+            color: var(--accent-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            border-radius: 5px;
+            flex-shrink: 0;
+            transition: all 0.3s ease;
+            opacity: 0.7;
+        }
+
+        p, .content-text,
+        .content-list li,
+        .description,
+        .author-content,
+        .social-link,
+        .content-list a {
+            font-family: 'Roboto', sans-serif;
+            font-weight: 400;
+        }
+
+        p, .content-text {
+            font-size: 14px;
+            color: var(--text-color);
+            margin-bottom: 15px;
+            line-height: 1.7;
+        }
+
+        .description {
+            font-style: italic;
+            color: var(--secondary-text);
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .content-list {
+            list-style-type: none;
+            margin: 20px 0;
+        }
+
+        .content-list li {
+            margin-bottom: 12px;
+            padding-left: 20px;
+            position: relative;
+            font-size: 14px;
+        }
+
+        .content-list li:before {
+            content: "—";
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+        }
+
+        .header-wrapper {
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            gap: 20px;
+            width: 700px;
+            max-width: 100%;
+            margin: 30px auto 50px;
+            padding: 0;
+        }
+
+        .icon-button:hover {
+            opacity: 1;
+            transform: scale(1.05);
+        }
+
+        .icon-button.active {
+            opacity: 1;
+            background-color: var(--accent-color);
+            color: var(--bg-color);
+            transform: scale(1.1);
+            box-shadow: 0 0 10px var(--accent-color);
+        }
+
+        .theme-switcher {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .header-mobile-row {
+            display: none;
+        }
+
+        .theme-switcher-mobile {
+            display: none;
+        }
+
+        .content-block {
+            width: 100%;
+            margin: 0 auto 40px;
+            padding: 25px;
+            background-color: var(--secondary-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            box-shadow: 0 4px 12px var(--shadow-color);
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        .content-section {
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+
+        .content-collapsed {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease, opacity 0.3s ease;
+        }
+
+        .content-expanded {
+            max-height: 2000px;
+            opacity: 1;
+            transition: max-height 0.8s ease, opacity 0.5s ease;
+        }
+
+        .toggle-icon {
+            margin-left: 8px;
+            transition: transform 0.3s ease;
+            display: inline-block;
+        }
+
+        .toggle-icon.expanded {
+            transform: rotate(180deg);
+        }
+
+        .section-header {
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px dashed var(--border-color);
+        }
+
+        .section-header:hover {
+            color: var(--accent-color);
+        }
+
+        .section-title {
+            margin: 0;
+            border: none;
+            padding: 0;
+        }
+
+        .expandable-content {
+            margin-bottom: 25px;
+        }
+
+        .short-content {
+            max-height: 300px;
+            overflow: hidden;
+            position: relative;
+            transition: max-height 0.5s ease, opacity 0.3s ease;
+            opacity: 1;
+        }
+
+        .short-content.collapsed {
+            max-height: 300px;
+            opacity: 1;
+        }
+
+        .short-content.expanded {
+            max-height: 5000px;
+            opacity: 1;
+        }
+
+        .short-content::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 60px;
+            background: linear-gradient(to bottom, transparent, var(--secondary-bg));
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .short-content.expanded::after {
+            opacity: 0;
+        }
+
+        .author-content {
+            line-height: 1.8;
+        }
+
+        .social-links {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-color);
+            text-decoration: none;
+            padding: 10px 15px;
+            border-radius: 8px;
+            background-color: var(--secondary-bg);
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-color);
+        }
+
+        .social-link:hover {
+            background-color: var(--accent-color);
+            color: var(--bg-color);
+            transform: translateX(5px);
+        }
+
+        .social-icon {
+            font-size: 18px;
+            width: 24px;
+            text-align: center;
+        }
+
+        .vk-group-container {
+            width: 100%;
+            max-width: 550px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .vk-group-button {
+            display: block;
+            width: 100%;
+            padding: 20px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 18px;
+            text-align: center;
+            letter-spacing: 0.5px;
+            border: 2px solid;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px var(--shadow-color);
+            line-height: 1.4;
+        }
+
+        [data-theme="light"] .vk-group-button {
+            background-color: var(--accent-color);
+            color: var(--bg-color);
+            border-color: var(--accent-color);
+        }
+
+        [data-theme="light"] .vk-group-button:hover {
+            background-color: var(--bg-color);
+            color: var(--accent-color);
+            border-color: var(--accent-color);
+        }
+
+        [data-theme="dark"] .vk-group-button {
+            background-color: var(--accent-color);
+            color: var(--bg-color);
+            border-color: var(--accent-color);
+        }
+
+        [data-theme="dark"] .vk-group-button:hover {
+            background-color: var(--bg-color);
+            color: var(--accent-color);
+            border-color: var(--accent-color);
+        }
+
+        .vk-group-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px var(--shadow-color);
+        }
+
+        .content-list a {
+            color: var(--text-color) !important;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .content-list a:hover {
+            color: var(--accent-color) !important;
+            text-decoration: underline;
+        }
+
+        .content-list a:visited {
+            color: var(--text-color) !important;
+        }
+
+        .content-list a:visited:hover {
+            color: var(--accent-color) !important;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        .icon-button.active {
+            animation: pulse 0.5s ease;
+        }
+
+        .license-footer {
+            width: 100%;
+            max-width: 550px;
+            margin: 40px auto 20px;
+            padding: 15px 20px;
+            text-align: center;
+            font-size: 12px;
+            color: var(--secondary-text);
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.5;
+            background-color: var(--secondary-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            box-shadow: 0 2px 8px var(--shadow-color);
+        }
+
+        .license-footer a {
+            color: var(--accent-color) !important;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .license-footer a:hover {
+            text-decoration: underline;
+        }
+
+        .license-text {
+            margin-bottom: 8px;
+        }
+
+        .license-icons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            margin: 8px auto;
+            padding: 8px;
+            background-color: var(--bg-color);
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+            width: fit-content;
+        }
+
+        .license-icons img {
+            width: 16px;
+            height: 16px;
+            opacity: 0.7;
+        }
+
+        .license-notes {
+            font-size: 11px;
+            margin-top: 8px;
+            opacity: 0.7;
+            font-style: italic;
+        }
+
+        @media (max-width: 768px) {
+            .header-wrapper {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+                margin: 10px auto 30px;
+                width: 100%;
+                max-width: 550px;
+                padding: 0;
+            }
+
+            #home-button,
+            .theme-switcher {
+                display: none;
+            }
+
+            .header-mobile-row {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                width: 100%;
+                max-width: 550px;
+                margin: 0 auto 15px;
+                padding: 0;
+            }
+
+            .theme-switcher-mobile {
+                display: flex;
+                flex-direction: row;
+                gap: 15px;
+            }
+
+            .content-block[style*="margin: 0"] {
+                order: 0;
+                width: 100%;
+                margin-bottom: 20px;
+                padding: 20px;
+            }
+
+            .vk-group-button {
+                padding: 16px;
+                font-size: 16px;
+            }
+
+            .short-content {
+                max-height: 200px;
+            }
+            .short-content.collapsed {
+                max-height: 200px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                width: calc(100% - 20px);
+            }
+
+            .icon-button {
+                width: 40px;
+                height: 40px;
+                font-size: 20px;
+            }
+
+            .content-block[style*="margin: 0"] {
+                padding: 15px;
+            }
+
+            .vk-group-button {
+                padding: 14px 12px;
+                font-size: 14px;
+            }
+
+            .short-content {
+                max-height: 150px;
+            }
+            .short-content.collapsed {
+                max-height: 150px;
+            }
+        }
+
+        @media (min-width: 769px) {
+            .content-block[style*="margin: 0"] {
+                max-width: 550px;
+                flex: none;
+            }
+        }
+
+        .scroll-arrow-btn {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(310px) translateY(100px);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--accent-color);
+            color: var(--bg-color);
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px var(--shadow-color);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .scroll-arrow-btn.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(310px) translateY(0);
+        }
+
+        @media (max-width: 768px) {
+            .scroll-arrow-btn {
+                left: 50%;
+                transform: translateX(-50%) translateY(100px);
+                bottom: 20px;
+                width: 45px;
+                height: 45px;
+                font-size: 22px;
+            }
+            .scroll-arrow-btn.show {
+                transform: translateX(-50%) translateY(0);
+            }
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: var(--accent-color);
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="header-mobile-row">
+        <button class="icon-button" id="home-button-mobile" aria-label="На главную">🠔</button>
+        <div class="theme-switcher-mobile">
+            <button class="icon-button" id="dark-theme-btn-mobile" aria-label="Тёмная тема">☪︎</button>
+            <button class="icon-button active" id="light-theme-btn-mobile" aria-label="Светлая тема">☀︎</button>
+        </div>
+    </div>
+
+    <div class="header-wrapper">
+        <button class="icon-button" id="home-button" aria-label="На главную">🠔</button>
+        
+        <div class="content-block" style="margin: 0; flex: 1;">
+            <h1>О ПОЛУОСТРОВЕ ВЕЙДРОТХ</h1>
+            <p class="content-text">описание статьи?</p>
+        </div>
+        
+        <div class="theme-switcher">
+            <button class="icon-button" id="dark-theme-btn" aria-label="Тёмная тема">☪︎</button>
+            <button class="icon-button active" id="light-theme-btn" aria-label="Светлая тема">🌣</button>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="content-block">
+            <h2>Содержание</h2>
+            
+            <div class="content-section">
+                <div class="section-header" onclick="toggleSection('section1')">
+                    <h3 class="section-title">Добро пожаловать, путник</h3>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div id="section1" class="content-collapsed">
+                    <ul class="content-list">
+                        <li><a href="1.1">Начнем с самого начала...</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <button class="expand-button" onclick="toggleAllSections()">
+                <span id="toggle-all-text">Развернуть всё</span>
+            </button>
+        </div>
+
+        <div class="content-block">
+            <h2>Добро пожаловать, путник</h2>
+<p class="content-text">Ты хочешь узнать, что это за место и что тут вообще происходит? Значит, ты попал по нужному адресу. Именно эта статья ответит тебе на вопрос «Что это такое?», но возможно оставит после себя ещё больше вопросов...</p>
+            
+            <div class="expandable-content">
+                <h3 id="punkt2">Начнем с самого начала...</h3>
+                <div id="content-punkt2" class="short-content collapsed">
+<p class="content-text">Основное действие происходит на Вейдротхе — крупном полуострове, именуемом «Домом Пустоты» и расположенном в северной части Атлантического океана, между Евразией и Северной Америкой. На картах он не отмечен, спутники — не видят, а современные приборы дружно выходят из строя, стоит только приблизиться. В чем причина? Конечно, в магии, которая поднимает пустотные штормы, которые выводят из строя электроприборы, рации и компасы.</p>
+<p class="content-text">Стоит подробнее остановиться и на теме самой магии. Первое, что нужно знать — магами не становятся, магами рождаются. Правда, бывают некоторые исключения, но не стоит сильно забивать себе этим голову! Запомните лишь то, что магия подчиняется законам местной генетики.</p>
+<p class="content-text">К тому же, она черпает силы из энергии владельца и тесно связана с физиологией: клыки длиннее, кровь гуще, характер хищнее... Восемь стихий, двадцать четыре разделенных вида, не учитывая особые и... вымершие? Но об этом потом.</p>
+<p class="content-text">Местные жители-маги (и не только маги!) с давних времен разделены на девять фракций. Восемь из них — по одной на каждую стихию, девятая — отколовшаяся. Несмотря на то, что они сильно различаются, войн на Вейдротхе меньше, чем можно было бы подумать — маги предпочитают жить относительно дружно и не убивать друг друга, ведь территории другой фракции — бесполезны.</p>
+<p class="content-text">Каждая из фракций имеет собственный взгляд на жизнь и собственную культуру, но их фундаментальная религия, их вера в Пустоту — едина и неизменна на протяжении веков и тысячелетий. Существуют и Культисты Пустоты — опасные анархисты, которые способны убить друг друга за кусок хлеба. А кто-то упоминает вслух имя некого Пророка...</p>
+<p class="content-text">Технологический прогресс Вейдротха сильно отличается от прогресса остального мира, ведь, как мы помним, электроприборы не работают должным образом. Несмотря на это, местные жители прекрасно приспособились, ведь у них есть рунология, а так же знания гидравлика и пневматики.</p>
+<p class="content-text">Они давно догадались, что, чтобы пациенты меньше умирали, требуется мыть руки! Но алхимию тоже никто не отменял, а то вы уже подумали, что тут развитое технологическое общество, ведь на самом деле тут развитое магическо-технологическое общество.</p>
+<p class="content-text">Флора и фауна здесь крайне разнообразна: уникальные животные и растения, неизвестные ранее обычному человеку существа, разумные расы, совсем не похожие на человека... Интересного здесь много, а ещё больше — опасного, особенно если ты не знаешь, как правильно отойти от детеныша виверны, пока его мать не посчитала тебя угрозой.</p>
+<p class="content-text">Внешний мир (Евразия, Америка и остальные), начиная с 2000-х годов, живет по абсолютно другой, не привычной нам политической карте: конфедерации, объединения, союзы... Вейдротх для них — «аномальная зона», которую официально не замечают, но неофициально изучают. Точнее, пытаются изучать, потому что незваных гостей местные не любят, однако контрабандистов они встречают с распростертыми объятиями... Ох уж это неравенство.</p>
+<p class="content-text">А теперь я тихо прошепчу тебе на ушко: на основе Вейдротха созданы (или будут созданы) визуальные новеллы: «Тени забытых снов» (серьезная), «Симулятор идиота: Вейдротх edition» (не очень) и «Я не должен быть это видеть» (триллер). А ещё — полноценная энциклопедия, два вида калькуляторов и закрытое сообщество в ВК. Так что, ежели вам надоело обычное фентези — добро пожаловать в Дом Пустоты!</p>
+                </div>
+                <button class="expand-button" onclick="toggleExpand('content-punkt2', this)">
+                    <span>Развернуть</span>
+                </button>
+            </div>
+            </div>
+        <div class="content-block">
+            <h2>Об авторе</h2>
+            
+            <div class="author-content">
+                <p>Привет! Создательница этого замечательного (сарк.) сеттинга — Ostri7533 
+                (Остри (7y+5=33), либо просто Остри), т.е. я!! Если хотите связаться со мной, то обратите внимание на ссылки ниже.</p>
+               
+                <div class="social-links">
+                    <a href="https://discord.com/users/1158055923315646536" target="_blank" class="social-link">
+                        <span class="social-icon">DS</span> My Discord: <b>ostri7533_</b>
+                    </a>
+                    
+                    <a href="https://vk.com/ostri7533" target="_blank" class="social-link">
+                        <span class="social-icon">VK</span> My VKontakte: <b>ostri7533</b>
+                    </a>
+                    
+                    <a href="https://t.me/ostri7533" target="_blank" class="social-link">
+                        <span class="social-icon">TG</span> My Telegram: <b>ostri7533</b>
+                    </a>
+                </div>
+             </div>
+           </div>
+
+        <div class="vk-group-container">
+            <a href="https://vk.com/veydroth" target="_blank" class="vk-group-button">
+                Официальная группа сеттинга в Вконтакте
+            </a>
+        </div>
+
+        <div class="license-footer">
+            <div class="license-text">
+                <a href="https://ostri7533.github.io/Veydroth/">Вейдротх | Дом Пустоты</a> © 2024 by 
+                <a href="https://ostri7533.github.io/Veydroth/">Ostri7533</a><br>
+                лицензировано под 
+                <a href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0 International</a>
+            </div>
+            
+            <div class="license-icons">
+                <a href="https://creativecommons.org/licenses/by-nc/4.0/" title="Creative Commons Attribution-NonCommercial 4.0 International">
+                    <img src="https://mirrors.creativecommons.org/presskit/icons/cc.svg" alt="Creative Commons">
+                </a>
+                <a href="https://creativecommons.org/licenses/by-nc/4.0/" title="Атрибуция">
+                    <img src="https://mirrors.creativecommons.org/presskit/icons/by.svg" alt="Атрибуция">
+                </a>
+                <a href="https://creativecommons.org/licenses/by-nc/4.0/" title="Некоммерческое использование">
+                    <img src="https://mirrors.creativecommons.org/presskit/icons/nc.svg" alt="Некоммерческое использование">
+                </a>
+            </div>
+            
+            <div class="license-notes">
+                Можно свободно делиться и адаптировать с указанием авторства.<br>
+                Коммерческое использование запрещено.
+            </div>
+        </div>
+    </div>
+
+    <button id="scrollArrow" class="scroll-arrow-btn" aria-label="Вниз">↓</button>
+
+    <script>
+        function toggleExpand(contentId, button) {
+            const content = document.getElementById(contentId);
+            const textSpan = button.querySelector('span:first-child');
+            
+            if (content.classList.contains('collapsed')) {
+                content.classList.remove('collapsed');
+                content.classList.add('expanded');
+                textSpan.textContent = 'Свернуть';
+            } else {
+                content.classList.remove('expanded');
+                content.classList.add('collapsed');
+                textSpan.textContent = 'Развернуть';
+            }
+        }
+
+        function setTheme(themeName) {
+            document.documentElement.setAttribute('data-theme', themeName);
+            localStorage.setItem('theme', themeName);
+            
+            const darkButtons = document.querySelectorAll('#dark-theme-btn, #dark-theme-btn-mobile');
+            const lightButtons = document.querySelectorAll('#light-theme-btn, #light-theme-btn-mobile');
+            
+            if (themeName === 'dark') {
+                darkButtons.forEach(btn => btn.classList.add('active'));
+                lightButtons.forEach(btn => btn.classList.remove('active'));
+            } else {
+                lightButtons.forEach(btn => btn.classList.add('active'));
+                darkButtons.forEach(btn => btn.classList.remove('active'));
+            }
+        }
+
+        function checkAllSectionsState() {
+            const sections = document.querySelectorAll('.content-collapsed, .content-expanded');
+            let expandedCount = 0;
+            sections.forEach(section => {
+                if (section.classList.contains('content-expanded')) expandedCount++;
+            });
+            const allExpanded = (expandedCount === sections.length && sections.length > 0);
+            const toggleText = document.getElementById('toggle-all-text');
+            if (toggleText) {
+                toggleText.textContent = allExpanded ? 'Свернуть всё' : 'Развернуть всё';
+            }
+        }
+
+        function toggleSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            if (!section) return;
+            const toggleIcon = section.previousElementSibling.querySelector('.toggle-icon');
+            if (section.classList.contains('content-collapsed')) {
+                section.classList.remove('content-collapsed');
+                section.classList.add('content-expanded');
+                if (toggleIcon) toggleIcon.classList.add('expanded');
+            } else {
+                section.classList.remove('content-expanded');
+                section.classList.add('content-collapsed');
+                if (toggleIcon) toggleIcon.classList.remove('expanded');
+            }
+            checkAllSectionsState();
+        }
+
+        function toggleAllSections() {
+            const sections = document.querySelectorAll('.content-collapsed, .content-expanded');
+            const toggleIcons = document.querySelectorAll('.toggle-icon');
+            const toggleText = document.getElementById('toggle-all-text');
+            if (!toggleText) return;
+            const shouldExpand = toggleText.textContent === 'Развернуть всё';
+            sections.forEach(section => {
+                if (shouldExpand) {
+                    section.classList.remove('content-collapsed');
+                    section.classList.add('content-expanded');
+                } else {
+                    section.classList.remove('content-expanded');
+                    section.classList.add('content-collapsed');
+                }
+            });
+            toggleIcons.forEach(icon => {
+                if (shouldExpand) icon.classList.add('expanded');
+                else icon.classList.remove('expanded');
+            });
+            toggleText.textContent = shouldExpand ? 'Свернуть всё' : 'Развернуть всё';
+        }
+
+        const darkThemeBtn = document.getElementById('dark-theme-btn');
+        const lightThemeBtn = document.getElementById('light-theme-btn');
+        const darkThemeBtnMobile = document.getElementById('dark-theme-btn-mobile');
+        const lightThemeBtnMobile = document.getElementById('light-theme-btn-mobile');
+        const homeButton = document.getElementById('home-button');
+        const homeButtonMobile = document.getElementById('home-button-mobile');
+
+        if (darkThemeBtn) darkThemeBtn.addEventListener('click', () => setTheme('dark'));
+        if (lightThemeBtn) lightThemeBtn.addEventListener('click', () => setTheme('light'));
+        if (darkThemeBtnMobile) darkThemeBtnMobile.addEventListener('click', () => setTheme('dark'));
+        if (lightThemeBtnMobile) lightThemeBtnMobile.addEventListener('click', () => setTheme('light'));
+        
+        if (homeButton) homeButton.addEventListener('click', () => { window.location.href = 'index.html'; });
+        if (homeButtonMobile) homeButtonMobile.addEventListener('click', () => { window.location.href = 'index.html'; });
+
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) setTheme(savedTheme);
+        else setTheme('light');
+
+        document.addEventListener('DOMContentLoaded', function() {
+            checkAllSectionsState();
+            
+            const hash = window.location.hash;
+            if (hash) {
+                const targetId = hash.substring(1);
+                const targetElement = document.getElementById(targetId);
+                if (targetElement) {
+                    const contentId = 'content-' + targetId;
+                    const contentElement = document.getElementById(contentId);
+                    if (contentElement && contentElement.classList.contains('short-content')) {
+                        const button = contentElement.nextElementSibling;
+                        if (button && button.classList.contains('expand-button')) {
+                            if (contentElement.classList.contains('collapsed')) {
+                                contentElement.classList.remove('collapsed');
+                                contentElement.classList.add('expanded');
+                                const span = button.querySelector('span:first-child');
+                                if (span) span.textContent = 'Свернуть';
+                            }
+                            setTimeout(() => {
+                                targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                            }, 200);
+                        }
+                    }
+                }
+            }
+        });
+
+        const scrollArrowBtn = document.getElementById('scrollArrow');
+        if (scrollArrowBtn) {
+            window.addEventListener('scroll', function() {
+                if (window.pageYOffset === 0) {
+                    scrollArrowBtn.classList.add('show');
+                    scrollArrowBtn.innerHTML = '↓';
+                } else if (window.pageYOffset > 300) {
+                    scrollArrowBtn.classList.add('show');
+                    scrollArrowBtn.innerHTML = '↑';
+                } else {
+                    scrollArrowBtn.classList.remove('show');
+                }
+            });
+            scrollArrowBtn.addEventListener('click', function() {
+                if (window.pageYOffset === 0) {
+                    window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+                } else {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                }
+            });
+        }
+    </script>
+</body>
+</html>
