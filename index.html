@@ -620,7 +620,6 @@
 <body>
     <!-- Мобильная строка с кнопками -->
     <div class="header-mobile-row">
-        <button class="icon-button" id="home-button-mobile" aria-label="На главную">🠔</button>
         <div class="theme-switcher-mobile">
             <button class="icon-button" id="dark-theme-btn-mobile" aria-label="Тёмная тема">☪︎</button>
             <button class="icon-button active" id="light-theme-btn-mobile" aria-label="Светлая тема">☀︎</button>
@@ -628,8 +627,6 @@
     </div>
 
     <div class="header-wrapper">
-        <!-- Иконка "Домой" слева -->
-        <button class="icon-button" id="home-button" aria-label="На главную">🠔</button>
         
         <!-- Текстовая шапка по центру -->
         <div class="content-block" style="margin: 0; flex: 1;">
@@ -909,8 +906,6 @@
         const lightThemeBtn = document.getElementById('light-theme-btn');
         const darkThemeBtnMobile = document.getElementById('dark-theme-btn-mobile');
         const lightThemeBtnMobile = document.getElementById('light-theme-btn-mobile');
-        const homeButton = document.getElementById('home-button');
-        const homeButtonMobile = document.getElementById('home-button-mobile');
 
         // Вешаем обработчики на кнопки
         darkThemeBtn.addEventListener('click', () => setTheme('dark'));
@@ -918,12 +913,6 @@
         darkThemeBtnMobile.addEventListener('click', () => setTheme('dark'));
         lightThemeBtnMobile.addEventListener('click', () => setTheme('light'));
         
-        homeButton.addEventListener('click', () => {
-            window.location.href = 'index.html';
-        });
-        homeButtonMobile.addEventListener('click', () => {
-            window.location.href = 'index.html';
-        });
 
         // Проверяем сохраненную тему при загрузке
         const savedTheme = localStorage.getItem('theme');
