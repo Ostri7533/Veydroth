@@ -1,0 +1,1733 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Магия и физиология магов || Вейдротх</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --bg-color: #F8F5F0;
+            --text-color: #2C2C2C;
+            --accent-color: #2C2C2C;
+            --secondary-text: #5D5D5D;
+            --secondary-bg: #E8E5E0;
+            --border-color: #2C2C2C;
+            --shadow-color: rgba(0, 0, 0, 0.1);
+        }
+
+        [data-theme="dark"] {
+            --bg-color: #121212;
+            --text-color: #C0C0C0;
+            --accent-color: #D4AF37;
+            --secondary-text: #A0A0A0;
+            --secondary-bg: #1C1C1C;
+            --border-color: #D4AF37;
+            --shadow-color: rgba(0, 0, 0, 0.4);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding: 25px 0 50px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .page-wrapper {
+            width: 550px;
+            max-width: calc(100% - 40px);
+            margin: 0 auto;
+        }
+
+        h1, h2, h3, h4, .section-title {
+            font-family: 'Oswald', sans-serif;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.5em;
+        }
+
+        h1 {
+            font-size: 25px;
+            color: var(--accent-color);
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            line-height: 1.3;
+        }
+
+        h2 {
+            font-size: 20px;
+            color: var(--accent-color);
+            margin: 25px 0 10px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 8px;
+        }
+
+        h3 {
+            font-size: 18px;
+            color: var(--accent-color);
+            margin: 20px 0 8px;
+        }
+
+        h4 {
+            font-size: 16px;
+            color: var(--accent-color);
+            margin: 15px 0 6px;
+        }
+
+        .expand-button,
+        .vk-group-button {
+            font-family: 'Oswald', sans-serif;
+            font-weight: 500;
+            letter-spacing: 0.8px;
+        }
+
+        .expand-button {
+            background-color: var(--accent-color);
+            color: var(--bg-color);
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 13px;
+            margin-top: 12px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.3s ease;
+        }
+
+        .expand-button:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
+        .expandable-content .expand-button {
+            margin-top: 5px;
+            margin-bottom: 20px;
+        }
+
+        .icon-button {
+            font-family: 'Oswald', sans-serif;
+            font-weight: 500;
+            font-size: 24px;
+            line-height: 1;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            color: var(--accent-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            border-radius: 5px;
+            flex-shrink: 0;
+            transition: all 0.3s ease;
+            opacity: 0.7;
+        }
+
+        p, .content-text,
+        .content-list li,
+        .description,
+        .block-description,
+        .author-content,
+        .social-link,
+        .content-list a {
+            font-family: 'Roboto', sans-serif;
+            font-weight: 400;
+        }
+
+        p, .content-text {
+            font-size: 14px;
+            color: var(--text-color);
+            margin-bottom: 15px;
+            line-height: 1.7;
+        }
+
+        .description {
+            font-style: italic;
+            color: var(--secondary-text);
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .content-list {
+            list-style-type: none;
+            margin: 20px 0;
+        }
+
+        .content-list li {
+            margin-bottom: 12px;
+            padding-left: 20px;
+            position: relative;
+            font-size: 14px;
+        }
+
+        .content-list li:before {
+            content: "—";
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+        }
+
+        /* ===== ШАПКА ===== */
+        .header-section {
+            position: relative;
+            width: 100%;
+            margin: 5px 0 50px;
+        }
+
+        .header-section .content-block {
+            margin: 0;
+        }
+
+        .home-button {
+            position: absolute;
+            left: -59px;
+            top: 0;
+        }
+
+        .theme-switcher {
+            position: absolute;
+            right: -59px;
+            top: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .icon-button:hover {
+            opacity: 1;
+            transform: scale(1.05);
+        }
+
+        .icon-button.active {
+            opacity: 1;
+            background-color: var(--accent-color);
+            color: var(--bg-color);
+            box-shadow: 0 0 10px var(--accent-color);
+        }
+
+        /* КОНТЕНТНЫЕ БЛОКИ */
+        .content-block {
+            width: 100%;
+            margin: 0 auto 40px;
+            padding: 25px;
+            background-color: var(--secondary-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            box-shadow: 0 4px 12px var(--shadow-color);
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        .container {
+            width: 100%;
+        }
+
+        .container .content-block:last-child {
+            margin-bottom: 0;
+        }
+
+        /* РАЗВОРАЧИВАЕМОЕ СОДЕРЖАНИЕ (меню) */
+        .content-section {
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+
+        .content-collapsed {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease, opacity 0.3s ease;
+        }
+
+        .content-expanded {
+            max-height: 2000px;
+            opacity: 1;
+            transition: max-height 0.8s ease, opacity 0.5s ease;
+        }
+
+        .toggle-icon {
+            margin-left: 8px;
+            transition: transform 0.3s ease;
+            display: inline-block;
+        }
+
+        .toggle-icon.expanded {
+            transform: rotate(180deg);
+        }
+
+        .section-header {
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px dashed var(--border-color);
+        }
+
+        .section-header:hover {
+            color: var(--accent-color);
+        }
+
+        .section-title {
+            margin: 0;
+            border: none;
+            padding: 0;
+        }
+
+        .expandable-content {
+            margin-bottom: 25px;
+        }
+
+        .block-description {
+            font-style: italic;
+            color: var(--secondary-text);
+            margin-bottom: 20px;
+            padding: 10px;
+            background-color: var(--bg-color);
+            border-left: 3px solid var(--accent-color);
+            border-radius: 3px;
+        }
+
+        /* КОРОТКИЙ/РАЗВЁРНУТЫЙ КОНТЕНТ */
+        .short-content {
+            max-height: 300px;
+            overflow: hidden;
+            position: relative;
+            transition: max-height 0.5s ease, opacity 0.3s ease;
+            opacity: 1;
+        }
+
+        .short-content.collapsed {
+            max-height: 300px;
+            opacity: 1;
+        }
+
+        .short-content.expanded {
+            max-height: 5000px;
+            opacity: 1;
+        }
+
+        .short-content::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 60px;
+            background: linear-gradient(to bottom, transparent, var(--secondary-bg));
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .short-content.expanded::after {
+            opacity: 0;
+        }
+
+        /* АВТОР И СОЦСЕТИ */
+        .author-content {
+            line-height: 1.8;
+        }
+
+        .social-links {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-color);
+            text-decoration: none;
+            padding: 10px 15px;
+            border-radius: 8px;
+            background-color: var(--secondary-bg);
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-color);
+        }
+
+        .social-link:hover {
+            background-color: var(--accent-color);
+            color: var(--bg-color);
+            transform: translateX(5px);
+        }
+
+        .social-icon {
+            font-size: 18px;
+            width: 24px;
+            text-align: center;
+        }
+
+        /* КНОПКА VK ГРУППЫ */
+        .vk-group-container {
+            width: 100%;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .vk-group-button {
+            display: block;
+            width: 100%;
+            padding: 20px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 18px;
+            text-align: center;
+            letter-spacing: 0.5px;
+            border: 2px solid;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px var(--shadow-color);
+            line-height: 1.4;
+        }
+
+        [data-theme="light"] .vk-group-button {
+            background-color: var(--accent-color);
+            color: var(--bg-color);
+            border-color: var(--accent-color);
+        }
+
+        [data-theme="light"] .vk-group-button:hover {
+            background-color: var(--bg-color);
+            color: var(--accent-color);
+            border-color: var(--accent-color);
+        }
+
+        [data-theme="dark"] .vk-group-button {
+            background-color: var(--accent-color);
+            color: var(--bg-color);
+            border-color: var(--accent-color);
+        }
+
+        [data-theme="dark"] .vk-group-button:hover {
+            background-color: var(--bg-color);
+            color: var(--accent-color);
+            border-color: var(--accent-color);
+        }
+
+        .vk-group-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px var(--shadow-color);
+        }
+
+        .content-list a {
+            color: var(--text-color) !important;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .content-list a:hover {
+            color: var(--accent-color) !important;
+            text-decoration: underline;
+        }
+
+        .content-list a:visited {
+            color: var(--text-color) !important;
+        }
+
+        .content-list a:visited:hover {
+            color: var(--accent-color) !important;
+        }
+
+        /* ПОДВАЛ С ЛИЦЕНЗИЕЙ */
+        .license-footer {
+            width: 100%;
+            margin: 40px auto 20px;
+            padding: 15px 20px;
+            text-align: center;
+            font-size: 12px;
+            color: var(--secondary-text);
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.5;
+            background-color: var(--secondary-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            box-shadow: 0 2px 8px var(--shadow-color);
+        }
+
+        .license-footer a {
+            color: var(--accent-color) !important;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .license-footer a:hover {
+            text-decoration: underline;
+        }
+
+        .license-text {
+            margin-bottom: 8px;
+        }
+
+        .license-icons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            margin: 8px auto;
+            padding: 8px;
+            background-color: var(--bg-color);
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+            width: fit-content;
+            line-height: 0;
+        }
+
+        .license-icons img {
+            width: 16px;
+            height: 16px;
+            opacity: 0.7;
+            display: block;
+        }
+
+        .license-notes {
+            font-size: 11px;
+            margin-top: 8px;
+            opacity: 0.7;
+            font-style: italic;
+        }
+
+        /* АНИМАЦИИ */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* МЕДИА-ЗАПРОСЫ */
+        @media (max-width: 768px) {
+            .header-section {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 10px;
+                margin: 0 0 50px;
+            }
+
+            .home-button {
+                position: static;
+                order: 1;
+            }
+
+            .theme-switcher {
+                position: static;
+                flex-direction: row;
+                justify-content: flex-end;
+                gap: 10px;
+                padding: 0;
+                margin-left: auto;
+                order: 2;
+            }
+
+            .header-section .content-block {
+                order: 3;
+                flex-basis: 100%;
+                padding: 20px;
+            }
+
+            .vk-group-button {
+                padding: 16px;
+                font-size: 16px;
+            }
+
+            .social-link {
+                padding: 8px 12px;
+                font-size: 14px;
+            }
+
+            .social-icon {
+                font-size: 16px;
+            }
+
+            .short-content {
+                max-height: 200px;
+            }
+            .short-content.collapsed {
+                max-height: 200px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .page-wrapper {
+                width: calc(100% - 20px);
+                max-width: 550px;
+            }
+
+            .header-section .content-block {
+                padding: 15px;
+            }
+
+            .header-section .content-block h1 {
+                font-size: 22px;
+            }
+
+            .icon-button {
+                width: 40px;
+                height: 40px;
+                font-size: 20px;
+            }
+
+            .theme-switcher {
+                gap: 8px;
+            }
+
+            .vk-group-button {
+                padding: 14px 12px;
+                font-size: 14px;
+            }
+
+            .short-content {
+                max-height: 150px;
+            }
+            .short-content.collapsed {
+                max-height: 150px;
+            }
+        }
+
+        /* КНОПКА ПРОКРУТКИ */
+        .scroll-arrow-btn {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(310px) translateY(100px);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--accent-color);
+            color: var(--bg-color);
+            border: 2px solid var(--bg-color);
+            font-size: 24px;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px var(--shadow-color), 0 0 0 2px var(--border-color);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .scroll-arrow-btn.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(310px) translateY(0);
+        }
+
+        .scroll-arrow-btn:hover {
+            transform: translateX(310px) translateY(-3px);
+            box-shadow: 0 6px 16px var(--shadow-color), 0 0 0 2px var(--border-color);
+        }
+
+        @media (max-width: 768px) {
+            .scroll-arrow-btn {
+                left: 50%;
+                transform: translateX(-50%) translateY(100px);
+                bottom: 20px;
+                width: 45px;
+                height: 45px;
+                font-size: 22px;
+            }
+
+            .scroll-arrow-btn.show {
+                transform: translateX(-50%) translateY(0);
+            }
+
+            .scroll-arrow-btn:hover {
+                transform: translateX(-50%) translateY(-3px);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .scroll-arrow-btn {
+                transform: translateX(-50%) translateY(100px);
+                bottom: 15px;
+                width: 40px;
+                height: 40px;
+                font-size: 20px;
+            }
+
+            .scroll-arrow-btn.show {
+                transform: translateX(-50%) translateY(0);
+            }
+
+            .scroll-arrow-btn:hover {
+                transform: translateX(-50%) translateY(-3px);
+            }
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        a:hover {
+            color: var(--accent-color);
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="page-wrapper">
+        <div class="header-section">
+            <button class="icon-button home-button" id="home-button" aria-label="На главную">🠔</button>
+            <div class="theme-switcher">
+                <button class="icon-button" id="dark-theme-btn" aria-label="Тёмная тема">☾</button>
+                <button class="icon-button active" id="light-theme-btn" aria-label="Светлая тема">☀</button>
+            </div>
+
+            <div class="content-block">
+                <h1>Магия и физиология магов</h1>
+                <p class="content-text">В данной статье подробно рассказывается об одной из основных и наиважнейших частей существования любого жителя Вейдротха — магии. Подробно рассказывается о её причинах, механизме работы, последствиях, смешении при гибридизации и многом другом, что стоит знать человеку, начавшему изучать данный мир.</p>
+            </div>
+        </div>
+
+        <div class="container">
+            <!-- Меню с разворачивающимся содержанием -->
+            <div class="content-block">
+                <h2>Содержание</h2>
+                
+                <div class="content-section">
+                    <div class="section-header" onclick="toggleSection('magic-basics')">
+                        <h3 class="section-title">Основа магии</h3>
+                        <span class="toggle-icon">▼</span>
+                    </div>
+                    <div id="magic-basics" class="content-collapsed">
+                        <ul class="content-list">
+                            <li><a href="#1.1">Суть магии</a></li>
+                            <li><a href="#1.2">Источник силы</a></li>
+                            <li><a href="#1.3">Пробуждение магии</a></li>
+                            <li><a href="#1.4">Разделение на ветки</a></li>
+                            <li><a href="#1.5">Разделение по уровню силы</a></li>
+                            <li><a href="#1.6">Определение и сокрытие магического статуса</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="content-section">
+                    <div class="section-header" onclick="toggleSection('magic-class')">
+                        <h3 class="section-title">Классификация магии</h3>
+                        <span class="toggle-icon">▼</span>
+                    </div>
+                    <div id="magic-class" class="content-collapsed">
+                        <ul class="content-list">
+                            <li><a href="#2.1">Типы магии</a></li>
+                            <li><a href="#2.2">Виды магии</a></li>
+                            <li><a href="#2.3">Пустотная магия</a></li>
+                            <li><a href="#2.4">Способности и коды</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="content-section">
+                    <div class="section-header" onclick="toggleSection('physiology')">
+                        <h3 class="section-title">Основа физиологии</h3>
+                        <span class="toggle-icon">▼</span>
+                    </div>
+                    <div id="physiology" class="content-collapsed">
+                        <ul class="content-list">
+                            <li><a href="#3.1">Базовая физиология</a></li>
+                            <li><a href="#3.2">Энергетические источники силы</a></li>
+                            <li><a href="#3.3">Метаболизм и химическая толерантность</a></li>
+                            <li><a href="#3.4">Восстановление и регенерация</a></li>
+                            <li><a href="#3.5">Продолжительность жизни и старение</a></li>
+                            <li><a href="#3.6">Особая физиология Пустотников</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="content-section">
+                    <div class="section-header" onclick="toggleSection('hybrids')">
+                        <h3 class="section-title">Гибриды</h3>
+                        <span class="toggle-icon">▼</span>
+                    </div>
+                    <div id="hybrids" class="content-collapsed">
+                        <ul class="content-list">
+                            <li><a href="#4.1">О механике передачи магии</a></li>
+                            <li><a href="#4.2">Гибридизация одного типа магии</a></li>
+                            <li><a href="#4.3">Гибридизация параллельных типов</a></li>
+                            <li><a href="#4.4">Гибридизация противоположных типов</a></li>
+                            <li><a href="#4.5">Гибридизация с нейтральным типом магии</a></li>
+                            <li><a href="#4.6">Прочие типы гибридизации</a></li>
+                            <li><a href="#4.7">Таблица гибридов</a></li>
+                            <li><a href="#4.8">Магия хаоса</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="content-section">
+                    <div class="section-header" onclick="toggleSection('magic-types-detail')">
+                        <h3 class="section-title">Подробнее о каждом виде магии</h3>
+                        <span class="toggle-icon">▼</span>
+                    </div>
+                    <div id="magic-types-detail" class="content-collapsed">
+                        <ul class="content-list">
+                            <li><a href="#5.1">Теневая магия (магия теней)</a></li>
+                            <li><a href="#5.2">Звёздная магия (магия звёзд)</a></li>
+                            <li><a href="#5.3">Световая магия (магия света)</a></li>
+                            <li><a href="#5.4">Серебряная магия (магия серебра)</a></li>
+                            <li><a href="#5.5">Ледяная магия (магия льда)</a></li>
+                            <li><a href="#5.6">Водяная магия (магия воды)</a></li>
+                            <li><a href="#5.7">Огненная магия (магия огня)</a></li>
+                            <li><a href="#5.8">Взрывная магия (магия взрывов)</a></li>
+                            <li><a href="#5.9">Штормовая магия (магия шторма)</a></li>
+                            <li><a href="#5.10">Ветряная магия (магия ветра)</a></li>
+                            <li><a href="#5.11">Погодная магия (магия погоды)</a></li>
+                            <li><a href="#5.12">Земляная магия (магия земли)</a></li>
+                            <li><a href="#5.13">Каменная магия (магия камня)</a></li>
+                            <li><a href="#5.14">Металлическая магия (магия металла)</a></li>
+                            <li><a href="#5.15">Растительная магия (магия растений)</a></li>
+                            <li><a href="#5.16">Ядовитая магия (магия ядов)</a></li>
+                            <li><a href="#5.17">Звериная магия (магия зверей, теромантия)</a></li>
+                            <li><a href="#5.18">Мёртвая магия (магия смерти, некромантия)</a></li>
+                            <li><a href="#5.19">Кровяная магия (магия крови)</a></li>
+                            <li><a href="#5.20">Мысленная магия (магия разума, церемантия)</a></li>
+                            <li><a href="#5.21">Временная магия (магия времени, хрономантия)</a></li>
+                            <li><a href="#5.22">Иллюзорная магия (магия иллюзий, иллюзионисты)</a></li>
+                            <li><a href="#5.23">Мимикрирующая магия (магия мимикрии)</a></li>
+                            <li><a href="#5.24">Звуковая магия (магия звука)</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="content-section">
+                    <div class="section-header" onclick="toggleSection('other')">
+                        <h3 class="section-title">Другое</h3>
+                        <span class="toggle-icon">▼</span>
+                    </div>
+                    <div id="other" class="content-collapsed">
+                        <ul class="content-list">
+                            <li><a href="#6.1">Часто задаваемые вопросы</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <button class="expand-button" onclick="toggleAllSections()">
+                    <span id="toggle-all-text">Развернуть всё</span>
+                </button>
+            </div>
+
+            <!-- Основной контент -->
+            <div class="content-block">
+                <h2>Основа магии</h2>
+                <p class="content-text">В данном блоке рассказывается об основе основ магии — её сути, источнике силы, а так же о том, как она впервые входит в жизнь каждого мага...</p>
+                
+                <div class="expandable-content">
+                    <h3 id="1.1">Суть магии</h3>
+                    <div id="content-1.1" class="short-content collapsed">
+                        <p class="content-text">Магия является неотъемлемой частью экосистемы Вейдротха. Она пропитывает всё вокруг: воздух, землю, воду, животных, растения и, конечно же, людей. Глубоко влияет на анатомию, физиологию и психологию, проникает во все аспекты жизни любого живого существа.</p>
+<p class="content-text">С технической точки зрения, магия — это особый вид энергии, который магические существа (в том числе и люди-маги) способны синтезировать из других видов энергии, даже из тех, что за энергию чаще всего не считаются. Также они способы синтезировать её обратно, что позволяет грамотно распределять затраты сил, не сваливаться в обморок от истощения и проживать без еды продолжительное время.</p>
+<p class="content-text">Стоит заметить, что магия черпает силы не из призрачной "маны", понятия которой в мире не существует, а из физических сил владельца — усталость от использования магии будет самой настоящей, физической — как после интенсивной пробежки или долгой тренировки, Кроме того, маг ощущает голод, ведь тело (и магия) требует много энергии для быстрого и эффективного восстановления сил. Полноценное использование магии вновь возможно сразу после непродолжительного отдыха и легкого приема пищи. Продолжительное использование магии через силу и усталость грозит обезвоживанием, истощением (физическим и психическим) и перегревом, в крайнем случае — летальным исходом.</p>
+<p class="content-text">Магия, чаще всего, бывает двух видов: активной и пассивной.<br>
+Активной магией является та, которую возможно использовать для сознательного, не инстинктивного контроля. Маг, уходящий в тень или запускающий огненный шар, или использующий любую другую активную способность проявляет активную магию. Активную магию можно "включать" и "выключать" по своему желанию и она подразумевает под собой  имение в том числе и обладание пассивной магии.<br>
+Пассивная магия является невозможной для сознательного контроля. У людей, чаще всего, это присутствие пассивных способностей при отсутствии активных. Присутствует магический иммунитет, особый метаболизм, иногда возможны даже активные пассивные способности, но активные отсутствуют. В отличие от людей, у других неразумных магических существ активные способности чаще всего присутствуют в полной мере, однако как раз из-за неразумности магия считается пассивной.</p>
+                    </div>
+                    <button class="expand-button" onclick="toggleExpand('content-1.1', this)">
+                        <span>Развернуть</span>
+                    </button>
+                </div>
+
+                <div class="expandable-content">
+                    <h3 id="1.2">Источник силы</h3>
+                    <div id="content-1.2" class="short-content collapsed">
+                        <p class="content-text">Источником силы называется среда, погодное явление или же другая природная сила, откуда маг, обладающий стихийной магией, черпает свои жизненные и магические силы. Находясь продолжительное время вдали от источника силы, либо в источнике силы, противоположном собственному, физическое и психическое состояние мага начинает ухудшаться.</p>
+<p class="content-text">То есть, теневой маг не может продолжительное время находиться в месте без теней, либо в ярком солнечном/искусном свете, ледяному магу становится плохо и способности ослабевают от тепла и жары, а у огненного, наоборот, от холода и мороза, снега.</p>
+<p class="content-text">Название стихийной магии в основном происходит от источника силы (теневая магия — тени, ледяная магия — лёд, водяная магия — вода), но иногда от процесса, происходящего после использования магии (взрывная — взрывы, но источник силы — тепло, горение), а также может называться по сокращенному названию источника силы (звездная магия, источник силы звёздный свет) или упрощенно (звериная магия, однако источником силы является лес, природа, контакт с животными, а процесс - понимание языка зверей и птиц и обращение в них).</p>
+<p class="content-text">У нейтральной магии нет источника силы по определению, данному в начале (среда, погодное явление или другая природная сила) из-за механизма её работы (в отличие от стихийной, чей механизм работы, исключая природную и жизненную, един) — управления чем-либо, соответственно, название дается несколько иначе, чем у стихийной магии (церемантия — все виды управления разумом, хрономантия — управление временем, звуковая — звуком).</p>
+                    </div>
+                    <button class="expand-button" onclick="toggleExpand('content-1.2', this)">
+                        <span>Развернуть</span>
+                    </button>
+                </div>
+
+                <div class="expandable-content">
+                    <h3 id="1.3">Пробуждение магии</h3>
+                    <div id="content-1.3" class="short-content collapsed">
+                        <p class="content-text">Пробуждением является уникальный, происходящий раз в жизни момент первого осознанного, пусть и спонтанного, проявления магии у человека. Это не изучение нового навыка, а спонтанное открытие врожденной способности, подобно тому, как человек впервые осознает свое умение видеть или слышать. Пробуждение — глубокий личный и часто очень эмоциональный переломный момент в жизни любого молодого мага.</p>
+<p class="content-text">Внешне процесс выглядит, как слабое, непроизвольное использование активной способности, например, теневой маг может непроизвольно на секунду раствориться в тени, у будущего огненного мага может загореться предмет в руках, что может выглядеть неумелым, но целенаправленным действием. Однако изнутри для самого человека это мощнейшее переживание. Он может испытать прилив энергии, жар или холод во всем теле, обострение всех чувств до болезненного уровня, или наоборот, отчуждение от реальности, а также эйфорию или панику.</p>
+<p class="content-text">Средний, типичный возраст (10-20 лет) Пробуждения магии является периодом полового созревания и гормональной перестройки организма, которые и служат "толчком" для Пробуждения магического потенциала. Возможно также раннее Пробуждение (младше 10 лет), происходящее редко и часто связанное с очень сильным эмоциональным потрясением (испуг, радость, гнев и т.д.), либо с ранним половым созреванием. Позднее Пробуждение (старше 20 лет) является наиболее редким, но также возможным и случающимся. Такая ситуация чаще всего происходит, если человек долгое время до Пробуждения рос и жил вдали от магических источников силы (например, на материке).</p>
+<p class="content-text">Пробуждение может быть естественным (происходящим без сторонней стимуляции), либо искусственным (стимулированным, то есть происходящим уже при сторонней стимуляции). Наиболее распространенным и эффективным методом является контакт с кристаллом Пустоты, который действует, как катализатор, "вытягивая" магию наружу. Процедура связана с некоторыми рисками и может быть болезненной, но полностью контролируется магом-наставником. Реже используется метод стимуляции через магическое вмешательство — опытный маг может "разбудить" магию непробужденного, временно поделившись своей силой, либо оказав точное магическое/ментальное давление.</p>
+<p class="content-text">Пробуждение может происходить дважды за жизнь мага, если он имеет Пустотную магию. Чаще всего момент Пробуждения данного вида магии не привязан к уровню владения и может произойти в любое время, но чаще всего через 5-7 лет после первого Пробуждения. Случаи более раннего второго Пробуждения не известны, в то время как более позднее возможно.</p>
+<p class="content-text">Первыми предвестниками скорого естественного Пробуждения являются определенные физиологические и психологические симптомы, среди которых:<br>
+1. Нервозность, раздражительность, беспокойство, тревога, но без конкретики: человек не может сказать, что именно его беспокоит или тревожит. Из-за раздражительности может быть свето- и звукобоязнь, сниженный болевой порог.<br>
+2. Легкий, но навязчивый зуд в мышцах, костях и суставах, головная боль (боль в висках, боль напряжения или вместе).<br>
+3. Легкая тахикардия (учащенное сердцебиение), легкая гипертония (повышенное давление), легкая, до 38 градусов, гипертермия (повышенная температура).<br>
+4. Повышенный аппетит, усиленное потоотделение, невозможность усидеть на месте, но при этом быстрая утомляемость, общая легкая слабость.<br>
+5. В редких случаях возможна тошнота, рвота, боли в мышцах, костях, суставах, боли в сердце (не опасны для здоровья!), сильная головная боль (боль в висках, боль напряжения или вместе).<br>
+6. В крайне редких случаях встречается брадикардия (замедление сердцебиения), гипотония (пониженное давление), гипотермия (пониженная температура), сниженный или отсутствующий аппетит, что требует наблюдения целителя.<br>
+7. При медицинном обследовании скорое естественное Пробуждение видно по следующим критериям: повышенная активность мозга, даже в покое и «сгусток энергии» в сердце (ощущается как легкий гул или вибрация из центра груди). При заборе крови на анализ обнаруживается изменение цвета крови (согласно виду магии, что скоро пробудится) и увеличение её веса (плотности).<br>
+8. Наблюдаются изменения в поведении: маг, ожидающий Пробуждения, становится более ласковым и социальным, испытывает сильную потребность в защите, может проявлять навязчивость, т.к. инстинкты заставляют искать безопасное место, а также защитника на период беспомощности и слабости после Пробуждения. Изменения в поведении почти не зависят от характера человека, однако у социофобов, мизантропов и других типов людей, не испытывающих эмоциональную связь с другими людьми, часто встречается тяга к неживым, но похожим на человека предметам, например манекенам и статуям, либо к предметам, имеющим на себе запах человека.<br>
+9. Иногда, от случая к случаю, встречается полное отсутствие всех симптомов (кроме п.7), очень легкие симптомы, либо присутствие лишь части. Чаще всего это встречается либо у магов с ранним пробуждением (до 10 лет, так как в основном связано с эмоциональными событиями), либо с поздным (после 20 лет, когда магия уже почти сформировалась, но ещё не пробудилась)</p>
+<p class="content-text">Данные симптомы начинаются примерно за несколько дней или неделю до Пробуждения, могут нарастать на протяжении всего времени данного периода вплоть до самого Пробуждения, а также сопровождать некоторое время после, перекликаясь с симптомами уже после Пробуждения.</p>
+<p class="content-text">В первые дни и недели сразу после Пробуждения наблюдается сильный упадок сил, вызванный первым проявлением магии, которое потребляет огромное количество энергии владельца. К этому добавляются непроизвольные проявления магии при сильных эмоциях, из-за чего возникает необходимость начала обучения под руководством наставника. После первичного обучения контролю над магией человек признается пробудившимся и получает право на вступление в определенные сферы деятельности (в основном — в боевую и медицинскую), а также может начать уже полноценное обучение и тренировки.</p>
+                    </div>
+                    <button class="expand-button" onclick="toggleExpand('content-1.3', this)">
+                        <span>Развернуть</span>
+                    </button>
+                </div>
+                
+                <div class="expandable-content">
+                    <h3 id="1.4">Разделение на ветки</h3>
+                    <div id="content-1.4" class="short-content collapsed">
+                        <p class="content-text">Любой вид стихийной магии разделяется максимум на три ветки (атакующая, обороняющая и исцеляющая). Процентное соотношение веток определяется после того, как маг достигнет уровня 50/100 в магии. Соотношение веток является врожденным и неизменным, при этом сумма процентов всегда составляет 100%, а процент каждой ветки всегда кратен 10-ти. Ветки влияют на фундамент личности человека, но итоговая личность всегда формируется воспитанием, окружением и т.д.</p>
+<p class="content-text">Ветки записываются в виде X/Y/Z, где X - атакующая, Y - обороняющая, Z - исцеляющая.<br>
+Атакующая ветка (X) — усиленные атакующие способности. Из особого — возможность материализации любого оружия и возможность материализации нескольких штук одновременно. Повышенная физическая сила, ускоренная реакция, повышенная боевая агрессия, сниженная эмоциональная устойчивость.<br>
+Обороняющая ветка (Y) — усиленные обороняющие способности. Повышенная физическая сила, повышенная выносливость, ускоренная реакция, немного сниженная боевая агрессия и немного повышенная эмоциональная устойчивость.<br>
+Исцеляющая ветка (Z) — усиленные исцеляющие способности. Повышенная выносливость, сниженная боевая агрессия и повышенная эмоциональная устойчивость.</p>
+<p class="content-text">Возможные соотношения веток:<br>
+Абсолютный специалист (100/0/0 // 0/100/0 // 0/0/100);<br>
+Доминирующий специалист (80/10/10 // 10/80/10 // 10/10/80);<br>
+Доминирующий специалист на 2 ветки (80/20/0 // 20/80/0 // 0/20/80 // 80/0/20 // 20/0/80 // 90/10/0 // 10/90/0 // 0/10/90 // 90/0/10 // 10/0/90);<br>
+Атакующе-обороняющий // Обороняюще-атакующий (50/40/10 // 40/50/10);<br>
+Обороняюще-исцеляющий // Исцеляюще-обороняющий (10/50/40 // 10/40/50);<br>
+Исцеляюще-атакующий // Атакующе-исцеляющий (40/10/50 // 50/10/40);<br>
+Солянка (40/30/30 // 30/40/30 // 30/30/40);</p>
+<p class="content-text">Возможные соотношения веток не ограничиваются указанными выше. Абсолютное равенство (33,3/33,3/33,3) невозможно. Абсолютный специалист и оба вида доминирующих специалистов — крайне редкие и уникальные соотношения. Наиболее часто встречаемый вид соотношения — солянка.</p>
+<p class="content-text">Отсутствие какой-либо ветки не обязательно означает, что маг не может пользоваться способностями, принадлежащими к данной ветке, но эффективность будет снижена по сравнению с магом, имеющим данную ветку, то есть примерно на уровне владения 40/100 + улучшения в точности и силе от повышения уровня владения.</p>
+                    </div>
+                    <button class="expand-button" onclick="toggleExpand('content-1.4', this)">
+                        <span>Развернуть</span>
+                    </button>
+                </div>
+
+                <div class="expandable-content">
+                    <h3 id="1.5">Разделение по уровню силы</h3>
+                    <div id="content-1.5" class="short-content collapsed">
+                        <p class="content-text">Уровень владения любым из видов стихийной магии разделяется на шкалу, имеющую внутри 10 уровней (0, 10, 20, 30... 80, 90), где 0/100 — почти полное отсутствие магии, а 100/100 — абсолютное мастерство. Система является объективным показателем силы и контроля и применяется ко всем видам стихийной магии. С ростом уровня растет мощь и контроль, расход сил становится экономичнее, и восстановление после высоких магических нагрузок происходит быстрее.</p>
+<p class="content-text">Шкала разделена на пять ключевых званий:<br>
+0-20 — Пробужденный;<br>
+— Для мага данных уровней типично минимальное освоение магических способностей, но на низком уровне из-за отсутствия знаний. Магия проявляется импульсивно, но в слабом виде, контроль почти невозможен или очень сложен. Часто на этих уровнях не задерживаются дольше полугода и переходят на следующий.<br>
+0-40 — Начинающий;<br>
+— С этих уровней начинается уже приемлемый уровень владения магии. Сила всё ещё может неожиданно проявляться при стрессовых ситуациях, однако это уже лучше контролируется. Человек может дать полноценный отпор при помощи магии или использовать её в быту, но лишь в качестве вспомогательного элемента.<br>
+40-60 — Посвященный;<br>
+— Посвященные составляют основу магического общества во всех сферах: боевой, целительской, различных ремеслах и других областях жизни. С этих уровней маг может считаться полноценным: он освоил все основные способности своей стихии, узнал врожденное соотношение своих ветвей (X/Y/Z), начиная с 50/100 и может использовать магию как основное оружие в бою или основной инструмент в быту.<br>
+60-80 — Мастер [Вид магии];<br>
+— Мастера являются следующей степенью после Посвященных. Их меньше, чем Посвященных, но больше, чем Архимагов. Грубо говоря, они могут быть "промежутком" между этими двумя званиями. Так как количественный рост закончился на уровнях Посвященных, с этих уровней начинается качественный рост силы. Так же с этого уровня возможно Пробуждение пустотной магии и начало её развития.<br>
+80-100 — Архимаг.<br>
+— Архимаги являются самым редким званием магического общества и составляют всего ~10% от всего народа. Для достижения данного уровня требуется прикладывать много сил к тренировкам, иметь упорство... или хорошую генетику, пусть она и не отменяет упорство и старания. На данных уровнях происходит резкий качественный скачок от Мастера.</p>
+<p class="content-text">Переход между разными уровнями — плавный и требуется длительных тренировок. Он растет нелинейно: повышение уровня с 50 до 60 требует значительно больше сил, упорства и времени, чем повышение уровня с 20 до 30, а повысить уровень с 90 до 100 может быть почти невозможно, особенно за короткое время, ведь помимо упорства и стараний на тренировках требуется ещё и длительный срок. К тому же, уровень со временем может деградировать — требуется постоянная практика для поддержания должного уровня умений.</p>
+<p class="content-text">Точный уровень владения силой измеряется благодаря ежегодному формальному тестированию, своеобразному экзамену, обязательному для всех, проводимого уполномоченными инструкторами из Высшей Академии. В некоторых случаях тест может проводиться вне основной сдачи — например, индивидуально, если требуется подтверждение/перепроверка уровня силы определенного мага или же ещё три дня (через три, через неделю и через месяц от основной) для тех, кто не смог по каким-либо причинам присутствовать на основной.</p>
+<p class="content-text">Тест проводится по следующему протоколу, результаты по трем ключевым параметрам фиксируются с помощью специальных магических рун-детектеров и затем интерпретируются инструктором:<br>
+1. Мощность: Маг выполняет 5 ударов на максимальную силу. Фиксируется средний показатель выделенной энергии.<br>
+2. Контроль: Маг выполняет по 3 удара на дистанции 15, 10 и 5 метров, стараясь сфокусировать всю силу в одной точке. Оценивается точность и отсутствие рассеивания.<br>
+3. Эффективность: Специалисты наблюдают за скоростью истощения мага в процессе всего теста, оценивая, насколько быстро он устает после каждого максимального усилия.</p>
+<p class="content-text">Итоговый уровень определяется по наименьшему показателю среди Контроля и Эффективность, подчеркивая приоритет точности над грубой силой. Показатель Мощности, стабильно значительно превышающий итоговый уровень, считается аномалией и служит признаком наличия у мага Пустотной магии и позволяет оценить уровень владения ею.</p>
+                    </div>
+                    <button class="expand-button" onclick="toggleExpand('content-1.5', this)">
+                        <span>Развернуть</span>
+                    </button>
+                </div>
+
+                <div class="expandable-content">
+                    <h3 id="1.6">Определение и сокрытие магического статуса</h3>
+                    <div id="content-1.6" class="short-content collapsed">
+                        <p class="content-text">Определить мага, а также его магический статус, возможно любому человеку, имеющему минимальные познания, благодаря определенным физиологическим особенностям носителей магии. Более точную диагностику возможно провести, если определяющий является магом: вручную, благодаря шестому магическому чувству, либо с помощью специальных рун-детектеров, фиксирующих с большой точностью вид магии и с меньшей — уровень владения ею, хоть и могут определить этот параметр с некоторой погрешностью.</p>
+<p class="content-text">Физиологические особенности являются очень точным способом определить, является ли человек магом, но не самым точным способом для определения конкретного вида и уровня владения. Их безусловный плюс — общая доступность и отсутствие необходимости в специальных инструментах. Магические методы, наоборот, являются одними из самых точных, но менее доступных (особенно для молодых магов) способов определения магического статуса и часто требуют специальных приборов.</p>
+<p class="content-text">Ощущение другого мага похоже на ощущение того, как обычный человек чувствует слежку за собой или чей-то взгляд на себе, однако в несколько раз острее и намного четче, к тому же этому можно специально обучиться (например, специально включать, концентрировать на определенном человеке, замечать даже маленькие магические следы). При касании определяемого это чувство резко обостряется и становится намного точнее.</p>
+<p class="content-text">В список видимых (и ощущаемых) без вскрытия или взятия образца тканей физиологических особенностей стихийных магов входят:<br>
+1. Удлиненные (минимум на 5мм) клыки, чаще всего верхние удлинены больше, чем нижние. Является надежным критерием для определения самого факта владения магией.<br>
+2. Температура тела несколько повышена, пульс учащен, данные параметры сохраняются и в состоянии покоя, но приходят в норму во сне.<br>
+3. Глаза светятся в темноте, могут иметь необычный для человека или чересчур насыщенный цвет. По яркости свечения можно предположить уровень владения, по цвету — вид магии, по самому свечению — сам факт владения.<br>
+4. Тело весит непропорционально своему размеру и объему, например, рука может оказаться неожиданно тяжелой, чем должна быть у обычного человека такого телосложения. Некоторые обученные люди, такие как целители или лекари, могут по весу костей и эластичности связок предположить тип(ы) магии.<br>
+5. У пустотных магов (пустотников) на ведущей руке часто присутствует длинный, но узкий ожог вдоль предплечья (оставшийся от непроизвольного использования Огня Пустоты во время Пробуждения) и маленькие ожоги на ладони (от последующего использования Огня Пустоты)</p>
+<p class="content-text">При взятии образца тканей, а конкретно — крови, благодаря её густоте и цвету можно определить уровень владения и вид магии соответственно с минимальной погрешностью. Для этого требуется лишь шприц (или нож), справочник по корреляции между цветом крови и видом магии, и, конечно же, сам маг.</p>
+<p class="content-text">Если в доступ попало полностью обескровленное тело, глаза отсутствуют или имеют обычный цвет, а клыки вырваны или обломаны, то мага можно узнать по следующим признакам:<br>
+1. Вес и плотность костей и мышц, вес, плотность и эластичность связок.<br>
+2. Цвет мышц, так как, подобно крови, они имеют несколько другой оттенок, соответствующий виду магии бывшего владельца тела.<br>
+3. Размеры сердца, гипертрофия сердечной стенки.<br>
+4. Толщина, но при этом эластичность стенок сосудов, особенно крупных.</p>
+<p class="content-text">Если нет возможности провести тест на физиологические особенности и отсутствуют специальные инструменты для фиксации магических особенностей, то можно использовать и поведенческие особенности магов:<br>
+1. Стремление к своему источнику силы и избегание противоположного. Таким образом, теневые маги стремятся находиться ближе к теням, действуют в основном в сумерках, световые наоборот, тянутся к свету и освещенным пространствам, огненные тянутся к теплу и не боятся огня, ледяные наоборот, ищут холод и так далее.<br>
+2. Выбор одежды определенной палитры. В основном это актуально, если человек принадлежит определенной фракции: выбор становится своеобразным культурным кодом, вписанным в подкорку мозга мага, он может тяготеть к официальным цветам своей фракции.<br>
+3. Единственный 100% способ определить вид магии по поведению — понаблюдать за ним во время использования способностей, для похожих друг на друга источников силы — фиксировать, в какое время используется (например, звездные используют свои способности в основном ночью, а световые днём, хотя внешне и по способностям эти два вида очень похожи) и понять источник силы мага.</p>
+<p class="content-text">В отличие от стихийных магов, нейтральных магов крайне тяжело определить по физиологическим особенностям: у них нет ни уплотненных мышц, костей или связок, ни увеличенного сердца, ни измененного цвета крови. В большинстве своем они выглядят как обычные люди. Самым эффективным способом для определения магического статуса нейтрального мага являются специальные инструменты, используемые в магических методах.</p>
+<p class="content-text">Однако, существует список и других особенностей, в основном косвенных, но действенных, если нет более подходящих методов:<br>
+1. Особенность церемантов, связанная с их магией — изменение цвета глаз в зависимости от эмоций, от использования церемантской способности или по собственному желанию мага разума. К тому же, они редко смотрят в глаза собеседнику, что является профессиональной привычкой (они должны смотреть в глаза, что применить свои способности). Они могут смотреть прямо между бровей, в переносицу, в лоб, в губы, но редко когда смотрят именно в глаза. Часто испытывают мигрени.<br>
+2. Хрономанты крайне часто выглядят не соответствующе своему биологическому возрасту: слишком молодыми или наоборот, слишком старыми. К тому же, их возраст может многократно превышать продолжительность жизни обычного человека. Если перед вами исчез человек, не оставив какого-либо магического следа, то скорее всего это хрономант, решивший сместиться во времени назад.<br>
+3. Маги иллюзий несколько не общительны, либо наоборот, чересчур общительны. Их кожа может быть холоднее и бледнее, чем у обычного человека. Если ваша рука прошла сквозь объект — скорее всего, это виноват иллюзионист. Если ваша рука не прошла сквозь объект, но у объекта странная для своей внешности текстура, "вроде бы то... но не то", скорее всего, тоже виноват иллюзионист, но уже иллюзионист-гибрид. К тому же, они не любят смотреть в зеркала: если в доме у человека нет ни одного зеркала, скорее всего, он иллюзионист, либо живет с иллюзионистом.<br>
+4. Мимикров почти невозможно вычислить, на то они и мимикры. Их можно опознать лишь в момент смены личины.<br>
+5. Звуковые маги избегают тишины, при полной тишине их охватывает паника. Могут быть гиперчувствительными к звукам, но при этом не проявлять признаков раздражения или дискомфорта, так как его нет. Вокруг них может едва уловимо гудеть воздух, иногда рядом можно ощутить инстинктивный страх из-за инфразвука, что они могут генерировать, либо дискомфорт из-за ультразвука. К тому же, если объект внезапно разрезало напополам, а его края оплавились, скорее всего, в этом виноват звуковой маг.</p>
+<p class="content-text">В это же время скрытие магического статуса тоже возможно и вполне успешно используется в магическом обществе среди шпионов, разведчиков и других людей, которые по тем или иным причинам не желают быть обнаруженными магически. В этот список входят:<br>
+1. Специальный природный артефакт-камень, помогающий полностью замаскировать изначальный магический "запах", который улавливают руны и другие маги.<br>
+2. Другие природные артефакты-камни, но они в основном лишь добавляют сверху чужой магический "запах", этим путая человека, пытающегося определить магический статус.<br>
+3. Определенные запахи (духи). Они часто маскируют и заменяют магический "запах", сбивая определяющего с толку, более дешевые запахи лишь добавляют сверху чужой "запах", внося путаницу.</p>
+<p class="content-text">К более приземленным способам сокрытия, в основном физиологических особенностей, относятся следующие пункты:<br>
+1. Свет глаз возможно скрыть с помощью специальных линз, с помощью них же можно скрыть цвет. В этом может помочь и глазная повязка, если бюджет на маскировку ограничен, но это, к сожалению, ограничивает зрение.<br>
+2. Повышенную температуру тела и учащенное сердцебиение возможно скрыть или контролировать благодаря специальным техникам медитации и дыхания.<br>
+3. Пустотникам для того, чтобы скрыть шрамы на ведущей руке, рекомендуется носить перчатки, наручи, митенки и другие аксессуары на руки.<br>
+4. Главное правило — не позволять кому-либо себя касаться, вести себя аккуратно, не использовать магию без большой необходимости, чтобы не оставлять магического следа, стараться избегать рун-детектеров и специально обученных стражников, но не навязчиво, дабы не вызывать подозрений.</p>
+                    </div>
+                    <button class="expand-button" onclick="toggleExpand('content-1.6', this)">
+                        <span>Развернуть</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="content-block">
+                <h2>Классификация магии</h2>
+                <p class="content-text">В данном блоке рассказывается об аыпыавпгывапвыап</p>
+                
+                <div class="expandable-content">
+                    <h3 id="2.1">Типы магии</h3>
+                    <div id="content-2.1" class="short-content collapsed">
+                        <p class="content-text">Описание описание описание описание описание описание описание описание описание</p>
+                        <p class="content-text">Описание описание описание описание описание описание описание описание описание</p>
+                    </div>
+                    <button class="expand-button" onclick="toggleExpand('content-2.1', this)">
+                        <span>Развернуть</span>
+                    </button>
+                </div>
+
+                <div class="expandable-content">
+                    <h3 id="2.2">Виды магии</h3>
+                    <div id="content-2.2" class="short-content collapsed">
+                        <p class="content-text">Описание описание описание описание описание описание описание описание описание</p>
+                        <p class="content-text">Описание описание описание описание описание описание описание описание описание</p>
+                    </div>
+                    <button class="expand-button" onclick="toggleExpand('content-2.2', this)">
+                        <span>Развернуть</span>
+                    </button>
+                </div>
+                
+                <div class="expandable-content">
+                    <h3 id="2.3">Пустотная магия</h3>
+                    <div id="content-2.3" class="short-content collapsed">
+                        <p class="content-text">Описание описание описание описание описание описание описание описание описание</p>
+                        <p class="content-text">Описание описание описание описание описание описание описание описание описание</p>
+                    </div>
+                    <button class="expand-button" onclick="toggleExpand('content-2.3', this)">
+                        <span>Развернуть</span>
+                    </button>
+                </div>
+               
+                <div class="expandable-content">
+                    <h3 id="2.4">Способности и коды</h3>
+                    <div id="content-2.4" class="short-content collapsed">
+                        <p class="content-text">Описание описание описание описание описание описание описание описание описание</p>
+                        <p class="content-text">Описание описание описание описание описание описание описание описание описание</p>
+                    </div>
+                    <button class="expand-button" onclick="toggleExpand('content-2.4', this)">
+                        <span>Развернуть</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="content-block">
+                <h2>Основа физиологии</h2>
+                <p class="content-text">В данном блоке рассказывается об аыпыавпгывапвыап</p>
+                
+                <div class="expandable-content">
+                    <h3 id="3.1">Базовая физиология</h3>
+                    <div id="content-3.1" class="short-content collapsed">
+                        <p class="content-text">Описание описание описание описание описание описание описание описание описание</p>
+                        <p class="content-text">Описание описание описание описание описание описание описание описание описание</p>
+                    </div>
+                    <button class="expand-button" onclick="toggleExpand('content-3.1', this)">
+                        <span>Развернуть</span>
+                    </button>
+                </div>
+
+                <div class="expandable-content">
+                    <h3 id="3.2">Энергетические источники силы</h3>
+                    <div id="content-3.2" class="short-content collapsed">
+                        <p class="content-text">Описание описание описание описание описание описание описание описание описание</p>
+                        <p class="content-text">Описание описание описание описание описание описание описание описание описание</p>
+                    </div>
+                    <button class="expand-button" onclick="toggleExpand('content-3.2', this)">
+                        <span>Развернуть</span>
+                    </button>
+                </div>
+                
+                <div class="expandable-content">
+                    <h3 id="3.3">Метаболизм и химическая толератность</h3>
+                    <div id="content-3.3" class="short-content collapsed">
+                        <p class="content-text">Описание описание описание описание описание описание описание описание описание</p>
+                        <p class="content-text">Описание описание описание описание описание описание описание описание описание</p>
+                    </div>
+                    <button class="expand-button" onclick="toggleExpand('content-3.3', this)">
+                        <span>Развернуть</span>
+                    </button>
+                </div>
+               
+                <div class="expandable-content">
+                    <h3 id="3.4">Регенерация и восстановление</h3>
+                    <div id="content-3.4" class="short-content collapsed">
+                        <p class="content-text">Описание описание описание описание описание описание описание описание описание</p>
+                        <p class="content-text">Описание описание описание описание описание описание описание описание описание</p>
+                    </div>
+                    <button class="expand-button" onclick="toggleExpand('content-3.4', this)">
+                        <span>Развернуть</span>
+                    </button>
+                </div>
+
+                <div class="expandable-content">
+                    <h3 id="3.5">Продолжительность жизни и старение</h3>
+                    <div id="content-3.5" class="short-content collapsed">
+                        <p class="content-text">Описание описание описание описание описание описание описание описание описание</p>
+                        <p class="content-text">Описание описание описание описание описание описание описание описание описание</p>
+                    </div>
+                    <button class="expand-button" onclick="toggleExpand('content-3.5', this)">
+                        <span>Развернуть</span>
+                    </button>
+                </div>
+
+                <div class="expandable-content">
+                    <h3 id="3.6">Особая физиология Пустотников</h3>
+                    <div id="content-3.6" class="short-content collapsed">
+                        <p class="content-text">Описание описание описание описание описание описание описание описание описание</p>
+                        <p class="content-text">Описание описание описание описание описание описание описание описание описание</p>
+                    </div>
+                    <button class="expand-button" onclick="toggleExpand('content-3.6', this)">
+                        <span>Развернуть</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="content-block">
+                <h2>Гибриды</h2>
+                <p class="content-text">В данном блоке рассказывается об аыпыавпгывапвыап</p>
+
+                <div class="expandable-content">
+                    <h3 id="4.1">О механике передачи магии</h3>
+                    <div id="content-4.1" class="short-content collapsed">
+                        <p class="content-text">Описание описание описание описание описание описание описание описание описание</p>
+                        <p class="content-text">Описание описание описание описание описание описание описание описание описание</p>
+                    </div>
+                    <button class="expand-button" onclick="toggleExpand('content-4.1', this)">
+                        <span>Развернуть</span>
+                    </button>
+                </div>
+                
+                <div class="expandable-content">
+                    <h3 id="4.2">Гибридизации одного типа магии</h3>
+                    <div id="content-4.2" class="short-content collapsed">
+                        <p class="content-text">Описание описание описание описание описание описание описание описание описание</p>
+                        <p class="content-text">Описание описание описание описание описание описание описание описание описание</p>
+                    </div>
+                    <button class="expand-button" onclick="toggleExpand('content-4.2', this)">
+                        <span>Развернуть</span>
+                    </button>
+                </div>
+
+                <div class="expandable-content">
+                    <h3 id="4.3">Гибридизации параллельных типов</h3>
+                    <div id="content-4.3" class="short-content collapsed">
+                        <p class="content-text">Описание описание описание описание описание описание описание описание описание</p>
+                        <p class="content-text">Описание описание описание описание описание описание описание описание описание</p>
+                    </div>
+                    <button class="expand-button" onclick="toggleExpand('content-4.3', this)">
+                        <span>Развернуть</span>
+                    </button>
+                </div>
+
+                <div class="expandable-content">
+                    <h3 id="4.4">Гибридизации противоположных типов</h3>
+                    <div id="content-4.4" class="short-content collapsed">
+                        <p class="content-text">Описание описание описание описание описание описание описание описание описание</p>
+                        <p class="content-text">Описание описание описание описание описание описание описание описание описание</p>
+                    </div>
+                    <button class="expand-button" onclick="toggleExpand('content-4.4', this)">
+                        <span>Развернуть</span>
+                    </button>
+                </div>
+
+                <div class="expandable-content">
+                    <h3 id="4.5">Гибридизация с нейтральным типом магии</h3>
+                    <div id="content-4.5" class="short-content collapsed">
+                        <p class="content-text">Описание описание описание описание описание описание описание описание описание</p>
+                        <p class="content-text">Описание описание описание описание описание описание описание описание описание</p>
+                    </div>
+                    <button class="expand-button" onclick="toggleExpand('content-4.5', this)">
+                        <span>Развернуть</span>
+                    </button>
+                </div>
+
+                <div class="expandable-content">
+                    <h3 id="4.6">Прочие типы гибридизации</h3>
+                    <div id="content-4.6" class="short-content collapsed">
+                        <p class="content-text">Описание описание описание описание описание описание описание описание описание</p>
+                        <p class="content-text">Описание описание описание описание описание описание описание описание описание</p>
+                    </div>
+                    <button class="expand-button" onclick="toggleExpand('content-4.6', this)">
+                        <span>Развернуть</span>
+                    </button>
+                </div>
+
+                <div class="expandable-content">
+                    <h3 id="4.7">Таблица гибридов</h3>
+                    <div id="content-4.7" class="short-content collapsed">
+                        <p class="content-text">Описание описание описание описание описание описание описание описание описание</p>
+                        <p class="content-text">Описание описание описание описание описание описание описание описание описание</p>
+                    </div>
+                    <button class="expand-button" onclick="toggleExpand('content-4.7', this)">
+                        <span>Развернуть</span>
+                    </button>
+                </div>
+
+                <div class="expandable-content">
+                    <h3 id="4.8">Магия хаоса</h3>
+                    <div id="content-4.8" class="short-content collapsed">
+                        <p class="content-text">Описание описание описание описание описание описание описание описание описание</p>
+                        <p class="content-text">Описание описание описание описание описание описание описание описание описание</p>
+                    </div>
+                    <button class="expand-button" onclick="toggleExpand('content-4.8', this)">
+                        <span>Развернуть</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="content-block">
+                <h2>Подробнее о каждом виде магии</h2>
+                <p class="content-text">В данном блоке рассказывается об аыпыавпгывапвыап</p>
+
+                <div class="expandable-content">
+                    <h3 id="5.1">Теневая магия (магия теней)</h3>
+                    <div id="content-5.1" class="short-content collapsed">
+                        <p class="content-text">Описание описание описание описание описание описание описание описание описание</p>
+                        <p class="content-text">Описание описание описание описание описание описание описание описание описание</p>
+                    </div>
+                    <button class="expand-button" onclick="toggleExpand('content-5.1', this)">
+                        <span>Развернуть</span>
+                    </button>
+                </div>
+                
+                <div class="expandable-content">
+                    <h3 id="5.2">Звёздная магия (магия звезд)</h3>
+                    <div id="content-5.2" class="short-content collapsed">
+                        <p class="content-text">Описание описание описание описание описание описание описание описание описание</p>
+                        <p class="content-text">Описание описание описание описание описание описание описание описание описание</p>
+                    </div>
+                    <button class="expand-button" onclick="toggleExpand('content-5.2', this)">
+                        <span>Развернуть</span>
+                    </button>
+                </div>
+
+                <div class="expandable-content">
+                    <h3 id="5.3">Световая магия (магия света)</h3>
+                    <div id="content-5.3" class="short-content collapsed">
+                        <p class="content-text">Описание описание описание описание описание описание описание описание описание</p>
+                        <p class="content-text">Описание описание описание описание описание описание описание описание описание</p>
+                    </div>
+                    <button class="expand-button" onclick="toggleExpand('content-5.3', this)">
+                        <span>Развернуть</span>
+                    </button>
+                </div>
+
+                <div class="expandable-content">
+                    <h3 id="5.4">Серебряная магия (магия серебра)</h3>
+                    <div id="content-5.4" class="short-content collapsed">
+                        <p class="content-text">Описание описание описание описание описание описание описание описание описание</p>
+                        <p class="content-text">Описание описание описание описание описание описание описание описание описание</p>
+                    </div>
+                    <button class="expand-button" onclick="toggleExpand('content-5.4', this)">
+                        <span>Развернуть</span>
+                    </button>
+                </div>
+
+                <div class="expandable-content">
+                    <h3 id="5.5">Ледяная магия (магия льда)</h3>
+                    <div id="content-5.5" class="short-content collapsed">
+                        <p class="content-text">Описание описание описание описание описание описание описание описание описание</p>
+                        <p class="content-text">Описание описание описание описание описание описание описание описание описание</p>
+                    </div>
+                    <button class="expand-button" onclick="toggleExpand('content-5.5', this)">
+                        <span>Развернуть</span>
+                    </button>
+                </div>
+
+                <div class="expandable-content">
+                    <h3 id="5.6">Водяная магия (магия воды)</h3>
+                    <div id="content-5.6" class="short-content collapsed">
+                        <p class="content-text">Описание описание описание описание описание описание описание описание описание</p>
+                        <p class="content-text">Описание описание описание описание описание описание описание описание описание</p>
+                    </div>
+                    <button class="expand-button" onclick="toggleExpand('content-5.6', this)">
+                        <span>Развернуть</span>
+                    </button>
+                </div>
+
+                <div class="expandable-content">
+                    <h3 id="5.7">Огненная магия (магия огня)</h3>
+                    <div id="content-5.7" class="short-content collapsed">
+                        <p class="content-text">Описание описание описание описание описание описание описание описание описание</p>
+                        <p class="content-text">Описание описание описание описание описание описание описание описание описание</p>
+                    </div>
+                    <button class="expand-button" onclick="toggleExpand('content-5.7', this)">
+                        <span>Развернуть</span>
+                    </button>
+                </div>
+
+                <div class="expandable-content">
+                    <h3 id="5.8">Взрывная магия (магия взрывов)</h3>
+                    <div id="content-5.8" class="short-content collapsed">
+                        <p class="content-text">Описание описание описание описание описание описание описание описание описание</p>
+                        <p class="content-text">Описание описание описание описание описание описание описание описание описание</p>
+                    </div>
+                    <button class="expand-button" onclick="toggleExpand('content-5.8', this)">
+                        <span>Развернуть</span>
+                    </button>
+                </div>
+
+                <div class="expandable-content">
+                    <h3 id="5.9">Штормовая магия (магия шторма)</h3>
+                    <div id="content-5.9" class="short-content collapsed">
+                        <p class="content-text">Описание описание описание описание описание описание описание описание описание</p>
+                        <p class="content-text">Описание описание описание описание описание описание описание описание описание</p>
+                    </div>
+                    <button class="expand-button" onclick="toggleExpand('content-5.9', this)">
+                        <span>Развернуть</span>
+                    </button>
+                </div>
+
+                <div class="expandable-content">
+                    <h3 id="5.10">Ветреная магия магия (магия ветра)</h3>
+                    <div id="content-5.10" class="short-content collapsed">
+                        <p class="content-text">Описание описание описание описание описание описание описание описание описание</p>
+                        <p class="content-text">Описание описание описание описание описание описание описание описание описание</p>
+                    </div>
+                    <button class="expand-button" onclick="toggleExpand('content-5.10', this)">
+                        <span>Развернуть</span>
+                    </button>
+                </div>
+
+                <div class="expandable-content">
+                    <h3 id="5.11">Погодная магия (магия погоды)</h3>
+                    <div id="content-5.11" class="short-content collapsed">
+                        <p class="content-text">Описание описание описание описание описание описание описание описание описание</p>
+                        <p class="content-text">Описание описание описание описание описание описание описание описание описание</p>
+                    </div>
+                    <button class="expand-button" onclick="toggleExpand('content-5.11', this)">
+                        <span>Развернуть</span>
+                    </button>
+                </div>
+
+                <div class="expandable-content">
+                    <h3 id="5.12">Земляная магия (магия земли)</h3>
+                    <div id="content-5.12" class="short-content collapsed">
+                        <p class="content-text">Описание описание описание описание описание описание описание описание описание</p>
+                        <p class="content-text">Описание описание описание описание описание описание описание описание описание</p>
+                    </div>
+                    <button class="expand-button" onclick="toggleExpand('content-5.12', this)">
+                        <span>Развернуть</span>
+                    </button>
+                </div>
+
+                <div class="expandable-content">
+                    <h3 id="5.13">Каменная магия (магия камня)</h3>
+                    <div id="content-5.13" class="short-content collapsed">
+                        <p class="content-text">Описание описание описание описание описание описание описание описание описание</p>
+                        <p class="content-text">Описание описание описание описание описание описание описание описание описание</p>
+                    </div>
+                    <button class="expand-button" onclick="toggleExpand('content-5.13', this)">
+                        <span>Развернуть</span>
+                    </button>
+                </div>
+
+                <div class="expandable-content">
+                    <h3 id="5.14">Металлическая магия (магия металла)</h3>
+                    <div id="content-5.14" class="short-content collapsed">
+                        <p class="content-text">Описание описание описание описание описание описание описание описание описание</p>
+                        <p class="content-text">Описание описание описание описание описание описание описание описание описание</p>
+                    </div>
+                    <button class="expand-button" onclick="toggleExpand('content-5.14', this)">
+                        <span>Развернуть</span>
+                    </button>
+                </div>
+
+                <div class="expandable-content">
+                    <h3 id="5.15">Растительная магия (магия растений)</h3>
+                    <div id="content-5.15" class="short-content collapsed">
+                        <p class="content-text">Описание описание описание описание описание описание описание описание описание</p>
+                        <p class="content-text">Описание описание описание описание описание описание описание описание описание</p>
+                    </div>
+                    <button class="expand-button" onclick="toggleExpand('content-5.15', this)">
+                        <span>Развернуть</span>
+                    </button>
+                </div>
+               
+                <div class="expandable-content">
+                    <h3 id="5.16">Ядовитая магия (магия ядов)</h3>
+                    <div id="content-5.16" class="short-content collapsed">
+                        <p class="content-text">Описание описание описание описание описание описание описание описание описание</p>
+                        <p class="content-text">Описание описание описание описание описание описание описание описание описание</p>
+                    </div>
+                    <button class="expand-button" onclick="toggleExpand('content-5.16', this)">
+                        <span>Развернуть</span>
+                    </button>
+                </div>
+
+                <div class="expandable-content">
+                    <h3 id="5.17">Звериная магия (магия зверей, теромантия)</h3>
+                    <div id="content-5.17" class="short-content collapsed">
+                        <p class="content-text">Описание описание описание описание описание описание описание описание описание</p>
+                        <p class="content-text">Описание описание описание описание описание описание описание описание описание</p>
+                    </div>
+                    <button class="expand-button" onclick="toggleExpand('content-5.17', this)">
+                        <span>Развернуть</span>
+                    </button>
+                </div>
+
+                <div class="expandable-content">
+                    <h3 id="5.18">Мёртвая магия (магия смерти, некромантия)</h3>
+                    <div id="content-5.18" class="short-content collapsed">
+                        <p class="content-text">Описание описание описание описание описание описание описание описание описание</p>
+                        <p class="content-text">Описание описание описание описание описание описание описание описание описание</p>
+                    </div>
+                    <button class="expand-button" onclick="toggleExpand('content-5.18', this)">
+                        <span>Развернуть</span>
+                    </button>
+                </div>
+
+                <div class="expandable-content">
+                    <h3 id="5.19">Кровяная магия (магия крови)</h3>
+                    <div id="content-5.19" class="short-content collapsed">
+                        <p class="content-text">Описание описание описание описание описание описание описание описание описание</p>
+                        <p class="content-text">Описание описание описание описание описание описание описание описание описание</p>
+                    </div>
+                    <button class="expand-button" onclick="toggleExpand('content-5.19', this)">
+                        <span>Развернуть</span>
+                    </button>
+                </div>
+
+                <div class="expandable-content">
+                    <h3 id="5.20">Мысленная магия (магия разума, церемантия)</h3>
+                    <div id="content-5.20" class="short-content collapsed">
+                        <p class="content-text">Описание описание описание описание описание описание описание описание описание</p>
+                        <p class="content-text">Описание описание описание описание описание описание описание описание описание</p>
+                    </div>
+                    <button class="expand-button" onclick="toggleExpand('content-5.20', this)">
+                        <span>Развернуть</span>
+                    </button>
+                </div>
+
+                <div class="expandable-content">
+                    <h3 id="5.21">Временная магия (магия времени, хрономантия)</h3>
+                    <div id="content-5.21" class="short-content collapsed">
+                        <p class="content-text">Описание описание описание описание описание описание описание описание описание</p>
+                        <p class="content-text">Описание описание описание описание описание описание описание описание описание</p>
+                    </div>
+                    <button class="expand-button" onclick="toggleExpand('content-5.21', this)">
+                        <span>Развернуть</span>
+                    </button>
+                </div>
+
+                <div class="expandable-content">
+                    <h3 id="5.22">Иллюзорная магия (магия иллюзий, иллюзионисты)</h3>
+                    <div id="content-5.22" class="short-content collapsed">
+                        <p class="content-text">Описание описание описание описание описание описание описание описание описание</p>
+                        <p class="content-text">Описание описание описание описание описание описание описание описание описание</p>
+                    </div>
+                    <button class="expand-button" onclick="toggleExpand('content-5.22', this)">
+                        <span>Развернуть</span>
+                    </button>
+                </div>
+
+                <div class="expandable-content">
+                    <h3 id="5.23">Мимикрирующая магия (магия мимикрии, мимикры)</h3>
+                    <div id="content-5.23" class="short-content collapsed">
+                        <p class="content-text">Описание описание описание описание описание описание описание описание описание</p>
+                        <p class="content-text">Описание описание описание описание описание описание описание описание описание</p>
+                    </div>
+                    <button class="expand-button" onclick="toggleExpand('content-5.23', this)">
+                        <span>Развернуть</span>
+                    </button>
+                </div>
+
+                <div class="expandable-content">
+                    <h3 id="5.24">Звуковая магия (магия звука)</h3>
+                    <div id="content-5.24" class="short-content collapsed">
+                        <p class="content-text">Описание описание описание описание описание описание описание описание описание</p>
+                        <p class="content-text">Описание описание описание описание описание описание описание описание описание</p>
+                    </div>
+                    <button class="expand-button" onclick="toggleExpand('content-5.24', this)">
+                        <span>Развернуть</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="content-block">
+                <h2>Другое</h2>
+                <p class="content-text">В данном блоке рассказывается об аыпыавпгывапвыап</p>
+                
+                <div class="expandable-content">
+                    <h3 id="6.1">ЧаВо (часто задаваемые вопросы)</h3>
+                    <div id="content-6.1" class="short-content collapsed">
+                        <p class="content-text">Описание описание описание описание описание описание описание описание описание</p>
+                        <p class="content-text">Описание описание описание описание описание описание описание описание описание</p>
+                    </div>
+                    <button class="expand-button" onclick="toggleExpand('content-6.1', this)">
+                        <span>Развернуть</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Блок с мини-описанием и связью с автором -->
+            <div class="content-block">
+                <h2>Об авторе</h2>
+                
+                <div class="author-content">
+                    <p>Привет! Создательница этого замечательного (сарк.) сеттинга — Ostri7533 
+                    (Остри (7y+5=33), либо просто Остри), т.е. я!! Если хотите связаться со мной, то обратите внимание на ссылки ниже.</p>
+                   
+                    <div class="social-links">
+                        <a href="https://discord.com/users/1158055923315646536" target="_blank" class="social-link">
+                            <span class="social-icon">DS</span> My Discord: <b>ostri7533_</b>
+                        </a>
+                        
+                        <a href="https://vk.com/ostri7533" target="_blank" class="social-link">
+                            <span class="social-icon">VK</span> My VKontakte: <b>ostri7533</b>
+                        </a>
+                        
+                        <a href="https://t.me/ostri7533" target="_blank" class="social-link">
+                            <span class="social-icon">TG</span> My Telegram: <b>ostri7533</b>
+                        </a>
+                    </div>
+                 </div>
+               </div>
+
+            <!-- Кнопка VK группы -->
+            <div class="vk-group-container">
+                <a href="https://vk.com/veydroth" target="_blank" class="vk-group-button">
+                    Официальная группа сеттинга в Вконтакте
+                </a>
+            </div>
+
+            <!-- Лицензия -->
+            <div class="license-footer">
+                <div class="license-text">
+                    <a href="https://ostri7533.github.io/Veydroth/">Вейдротх | Дом Пустоты</a> © 2024 by 
+                    <a href="https://ostri7533.github.io/Veydroth/">Ostri7533</a><br>
+                    лицензировано под 
+                    <a href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0 International</a>
+                </div>
+                
+                <div class="license-icons">
+                    <a href="https://creativecommons.org/licenses/by-nc/4.0/" title="Creative Commons Attribution-NonCommercial 4.0 International">
+                        <img src="https://mirrors.creativecommons.org/presskit/icons/cc.svg" alt="Creative Commons">
+                    </a>
+                    <a href="https://creativecommons.org/licenses/by-nc/4.0/" title="Атрибуция">
+                        <img src="https://mirrors.creativecommons.org/presskit/icons/by.svg" alt="Атрибуция">
+                    </a>
+                    <a href="https://creativecommons.org/licenses/by-nc/4.0/" title="Некоммерческое использование">
+                        <img src="https://mirrors.creativecommons.org/presskit/icons/nc.svg" alt="Некоммерческое использование">
+                    </a>
+                </div>
+                
+                <div class="license-notes">
+                    Можно свободно делиться и адаптировать с указанием авторства.<br>
+                    Коммерческое использование запрещено.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Умная кнопка навигации -->
+    <button id="scrollArrow" class="scroll-arrow-btn" aria-label="Вниз">↓</button>
+
+    <script>
+        // ФУНКЦИЯ ДЛЯ РАЗВОРАЧИВАНИЯ/СВОРАЧИВАНИЯ КОНТЕНТА С ПЛАВНОЙ АНИМАЦИЕЙ
+        function toggleExpand(contentId, button) {
+            const content = document.getElementById(contentId);
+            const textSpan = button.querySelector('span:first-child');
+            
+            if (content.classList.contains('collapsed')) {
+                content.classList.remove('collapsed');
+                content.classList.add('expanded');
+                textSpan.textContent = 'Свернуть';
+            } else {
+                content.classList.remove('expanded');
+                content.classList.add('collapsed');
+                textSpan.textContent = 'Развернуть';
+            }
+        }
+
+        // Функция для применения темы
+        function setTheme(themeName) {
+            document.documentElement.setAttribute('data-theme', themeName);
+            localStorage.setItem('theme', themeName);
+            
+            const darkButtons = document.querySelectorAll('#dark-theme-btn');
+            const lightButtons = document.querySelectorAll('#light-theme-btn');
+            
+            if (themeName === 'dark') {
+                darkButtons.forEach(btn => btn.classList.add('active'));
+                lightButtons.forEach(btn => btn.classList.remove('active'));
+            } else {
+                lightButtons.forEach(btn => btn.classList.add('active'));
+                darkButtons.forEach(btn => btn.classList.remove('active'));
+            }
+        }
+
+        // Функция для переключения секций содержания с плавной анимацией
+        function toggleSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            const toggleIcon = section.previousElementSibling.querySelector('.toggle-icon');
+            
+            if (section.classList.contains('content-collapsed')) {
+                section.classList.remove('content-collapsed');
+                section.classList.add('content-expanded');
+                toggleIcon.classList.add('expanded');
+            } else {
+                section.classList.remove('content-expanded');
+                section.classList.add('content-collapsed');
+                toggleIcon.classList.remove('expanded');
+            }
+            
+            checkAllSectionsState();
+        }
+
+        // Функция для переключения всех секций содержания
+        function toggleAllSections() {
+            const sections = document.querySelectorAll('[id^="magic-"], [id^="hybrid"], [id^="physiology"], [id^="magic-types-detail"], [id^="other"]');
+            const toggleIcons = document.querySelectorAll('.section-header .toggle-icon');
+            const toggleText = document.getElementById('toggle-all-text');
+            
+            const shouldExpand = toggleText.textContent === 'Развернуть всё';
+            
+            sections.forEach(section => {
+                if (shouldExpand) {
+                    section.classList.remove('content-collapsed');
+                    section.classList.add('content-expanded');
+                } else {
+                    section.classList.remove('content-expanded');
+                    section.classList.add('content-collapsed');
+                }
+            });
+            
+            toggleIcons.forEach(icon => {
+                if (shouldExpand) {
+                    icon.classList.add('expanded');
+                } else {
+                    icon.classList.remove('expanded');
+                }
+            });
+            
+            toggleText.textContent = shouldExpand ? 'Свернуть всё' : 'Развернуть всё';
+        }
+
+        // Функция для проверки состояния всех секций содержания
+        function checkAllSectionsState() {
+            const sections = document.querySelectorAll('[id^="magic-"], [id^="hybrid"], [id^="physiology"], [id^="magic-types-detail"], [id^="other"]');
+            const allExpanded = Array.from(sections).every(section => section.classList.contains('content-expanded'));
+            const allCollapsed = Array.from(sections).every(section => section.classList.contains('content-collapsed'));
+            
+            const toggleText = document.getElementById('toggle-all-text');
+            
+            if (allExpanded) {
+                toggleText.textContent = 'Свернуть всё';
+            } else if (allCollapsed) {
+                toggleText.textContent = 'Развернуть всё';
+            } else {
+                toggleText.textContent = 'Развернуть всё';
+            }
+        }
+
+        // Получаем элементы кнопок
+        const darkThemeBtn = document.getElementById('dark-theme-btn');
+        const lightThemeBtn = document.getElementById('light-theme-btn');
+        const homeButton = document.getElementById('home-button');
+
+        // Вешаем обработчики на кнопки
+        darkThemeBtn.addEventListener('click', () => setTheme('dark'));
+        lightThemeBtn.addEventListener('click', () => setTheme('light'));
+        if (homeButton) homeButton.addEventListener('click', () => { window.location.href = 'index.html'; });
+
+        // Проверяем сохраненную тему при загрузке
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            setTheme(savedTheme);
+        } else {
+            setTheme('light');
+        }
+
+        // Инициализация состояний при загрузке
+        document.addEventListener('DOMContentLoaded', function() {
+            checkAllSectionsState();
+            
+            // Автоматически разворачиваем контент при переходе по якорю
+            const hash = window.location.hash;
+            if (hash) {
+                const targetId = hash.substring(1);
+                const targetElement = document.getElementById(targetId);
+                
+                if (targetElement) {
+                    const contentId = 'content-' + targetId;
+                    const contentElement = document.getElementById(contentId);
+                    
+                    if (contentElement) {
+                        const button = contentElement.nextElementSibling;
+                        if (button && button.classList.contains('expand-button')) {
+                            contentElement.classList.remove('collapsed');
+                            contentElement.classList.add('expanded');
+                            const textSpan = button.querySelector('span:first-child');
+                            textSpan.textContent = 'Свернуть';
+                            
+                            setTimeout(() => {
+                                targetElement.scrollIntoView({ 
+                                    behavior: 'smooth', 
+                                    block: 'start',
+                                    inline: 'nearest'
+                                });
+                            }, 300);
+                        }
+                    }
+                }
+            }
+        });
+
+        // Функция для умной кнопки навигации
+        const scrollArrowBtn = document.getElementById('scrollArrow');
+        
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset === 0) {
+                scrollArrowBtn.classList.add('show');
+                scrollArrowBtn.innerHTML = '↓';
+                scrollArrowBtn.setAttribute('aria-label', 'Вниз');
+            } else if (window.pageYOffset > 300) {
+                scrollArrowBtn.classList.add('show');
+                scrollArrowBtn.innerHTML = '↑';
+                scrollArrowBtn.setAttribute('aria-label', 'Наверх');
+            } else {
+                scrollArrowBtn.classList.remove('show');
+            }
+        });
+        
+        scrollArrowBtn.addEventListener('click', function() {
+            if (window.pageYOffset === 0) {
+                window.scrollTo({
+                    top: document.body.scrollHeight,
+                    behavior: 'smooth'
+                });
+            } else {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    </script>
+</body>
+</html>
