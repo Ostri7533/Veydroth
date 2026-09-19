@@ -473,109 +473,112 @@
         }
 
         /* МЕДИА-ЗАПРОСЫ */
-        @media (max-width: 768px) {
-            .header-wrapper {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                gap: 15px;
-                margin: 10px auto 30px;
-                width: 100%;
-                max-width: 550px;
-                padding: 0;
-            }
+       @media (max-width: 768px) {
+    .header-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+        margin: 10px auto 30px;
+        width: calc(100% - 40px);
+        max-width: 550px;
+        padding: 0;
+    }
 
-            .header-spacer,
-            .theme-switcher {
-                display: none;
-            }
+    .header-spacer,
+    .theme-switcher {
+        display: none;
+    }
 
-            .header-mobile-row {
-                display: flex;
-                justify-content: flex-end;
-                align-items: center;
-                width: 100%;
-                max-width: 550px;
-                margin: 0 auto 15px;
-                padding: 0;
-            }
+    .header-mobile-row {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        width: calc(100% - 40px);
+        max-width: 550px;
+        margin: 0 auto 15px;
+        padding: 0;
+    }
 
-            .theme-switcher-mobile {
-                display: flex;
-                flex-direction: row;
-                gap: 15px;
-                padding-top: 4px;
-            }
+    .theme-switcher-mobile {
+        display: flex;
+        flex-direction: row;
+        gap: 15px;
+        padding-top: 4px;
+    }
 
-            .content-block[style*="margin: 0"] {
-                order: 0;
-                width: 100%;
-                margin-bottom: 20px;
-                padding: 20px;
-            }
+    .content-block[style*="margin: 0"] {
+        order: 0;
+        width: 100%;
+        margin-bottom: 20px;
+        padding: 20px;
+    }
 
-            .vk-group-button {
-                padding: 16px;
-                font-size: 16px;
-            }
+    .vk-group-button {
+        padding: 16px;
+        font-size: 16px;
+    }
 
-            .social-link {
-                padding: 8px 12px;
-                font-size: 14px;
-            }
+    .social-link {
+        padding: 8px 12px;
+        font-size: 14px;
+    }
 
-            .social-icon {
-                font-size: 16px;
-            }
-        }
+    .social-icon {
+        font-size: 16px;
+    }
+}
 
-        @media (max-width: 480px) {
-            .container {
-                width: calc(100% - 20px);
-            }
+@media (max-width: 480px) {
+    .container {
+        width: calc(100% - 20px);
+    }
 
-            .header-wrapper {
-                gap: 10px;
-                margin: 5px auto 25px;
-                max-width: calc(100% - 20px);
-            }
+    .header-wrapper {
+        gap: 10px;
+        margin: 5px auto 25px;
+        width: calc(100% - 20px);
+        max-width: none;
+    }
 
-            .header-mobile-row {
-                margin-bottom: 10px;
-                gap: 10px;
-                max-width: calc(100% - 20px);
-            }
+    .header-mobile-row {
+        margin-bottom: 10px;
+        gap: 10px;
+        width: calc(100% - 20px);
+        max-width: none;
+    }
 
-            .icon-button {
-                width: 40px;
-                height: 40px;
-                font-size: 20px;
-            }
+    .icon-button {
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+    }
 
-            .theme-switcher-mobile {
-                gap: 8px;
-            }
+    .theme-switcher-mobile {
+        gap: 8px;
+    }
 
-            .content-block[style*="margin: 0"] {
-                padding: 15px;
-                max-width: calc(100% - 20px);
-                margin-left: auto;
-                margin-right: auto;
-            }
+    .content-block[style*="margin: 0"] {
+        padding: 15px;
+        width: calc(100% - 20px);
+        max-width: none;
+        margin-left: auto;
+        margin-right: auto;
+    }
 
-            .content-block[style*="margin: 0"] h1 {
-                font-size: 22px;
-            }
+    .content-block[style*="margin: 0"] h1 {
+        font-size: 22px;
+    }
 
-            .content-block[style*="margin: 0"] .description {
-                font-size: 13px;
-            }
+    .content-block[style*="margin: 0"] .description {
+        font-size: 13px;
+    }
 
-            .vk-group-button {
-                padding: 14px 12px;
-                font-size: 14px;
-            }
-        }
+    .vk-group-button {
+        padding: 14px 12px;
+        font-size: 14px;
+    }
+}
 
         /* КНОПКА ПРОКРУТКИ */
         .scroll-arrow-btn {
